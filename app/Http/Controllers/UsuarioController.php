@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-//Configurando
+//agregamos lo siguiente
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -19,10 +19,17 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = User::Paginate(10);
-        return view('usuarios.index ', compact('usuarios'));
+        //Sin paginación
+        /* $usuarios = User::all();
+        return view('usuarios.index',compact('usuarios')); */
+
+        //Con paginación
+        $usuarios = User::paginate(5);
+        return view('usuarios.index', compact('usuarios'));
+
+        //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
 
     /**
@@ -32,6 +39,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
+        //aqui trabajamos con name de las tablas de users
         $roles = Role::pluck('name', 'name')->all();
         return view('usuarios.crear', compact('roles'));
     }
@@ -52,7 +60,7 @@ class UsuarioController extends Controller
         ]);
 
         $input = $request->all();
-        $input['password'] = Hash::make($input['input']);
+        $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
@@ -86,6 +94,7 @@ class UsuarioController extends Controller
         return view('usuarios.editar', compact('user', 'roles', 'userRole'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -97,7 +106,7 @@ class UsuarioController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email' . $id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
@@ -114,6 +123,7 @@ class UsuarioController extends Controller
         DB::table('model_has_roles')->where('model_id', $id)->delete();
 
         $user->assignRole($request->input('roles'));
+
         return redirect()->route('usuarios.index');
     }
 

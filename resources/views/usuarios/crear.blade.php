@@ -14,12 +14,12 @@
                             @if ($errors->any())
                                 <div class="alert alert-primary" role="alert">
                                     <strong>Por favor, Revise los campos.</strong>
-                                    @foreach ($errores->all() as $error)
+                                    @foreach ($errors->all() as $error)
                                         <span class="badge badge-danger">{{ $error }}</span>
                                     @endforeach
-                                    <button type="button" class="close" data-dimiss="alert" aria-label="close">
+                                    {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    </button> --}}
                                 </div>
                             @endif
 
