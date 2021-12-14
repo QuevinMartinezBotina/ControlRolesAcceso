@@ -10,10 +10,10 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <a class="btn btn-success" href="{{ route('usuarios.create') }}">Nuevo</a>
+                            <a class="btn btn-success mb-4" href="{{ route('usuarios.create') }}">Nuevo</a>
 
-                            <table class="table table-striped mt-3 table-hover ">
-                                <thead class=" bg-primary text-white">
+                            <table id="dataTables" class="table table-striped mt-3 table-hover rounded  ">
+                                <thead class=" bg-primary text-white rounded">
                                     <tr class="text-white">
                                         <th class="text-white muted" style="display: none;">ID</th>
                                         <th class="text-white ">Nombre</th>
@@ -54,6 +54,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
+
                         </div>
                     </div>
                 </div>

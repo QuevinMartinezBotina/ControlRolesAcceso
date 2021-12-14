@@ -40,7 +40,9 @@
                                             <label for="contenido">Contenido</label>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                        <button type="submit" class="btn btn-success m-1 ">Guardar</button>
+                                        <a class="btn btn-primary m-1" href="{{ route('blogs.index') }}">Volver</a>
+
                                     </div>
                             </form>
 

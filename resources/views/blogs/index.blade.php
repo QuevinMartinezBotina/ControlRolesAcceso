@@ -12,10 +12,10 @@
                         <div class="card-body">
 
                             @can('crear-blog')
-                                <a class="btn btn-warning" href="{{ route('blogs.create') }}">Nuevo</a>
+                                <a class="btn btn-success mb-4" href="{{ route('blogs.create') }}">Nuevo</a>
                             @endcan
 
-                            <table class="table table-striped mt-2">
+                            <table id="dataTables" class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">
                                     <th style="display: none;">ID</th>
                                     <th style="color:#fff;">Titulo</th>

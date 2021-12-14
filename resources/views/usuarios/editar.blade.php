@@ -56,7 +56,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <button type="submit" class="btn btn-success m-1">Guardar</button>
+                                    <a class="btn btn-primary m-1" href="{{ route('usuarios.index') }}">Volver</a>
+
                                 </div>
                             </div>
                             {!! Form::close() !!}
