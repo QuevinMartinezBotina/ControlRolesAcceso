@@ -23,45 +23,48 @@
                                 </div>
                             @endif
 
-                            {!! Form::model($user, ['method' => 'PATCH', 'route' => ['usuarios.update', $user->id]]) !!}
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <label for="name">Nombre</label>
-                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                            @can('editar-usuario')
+                                {!! Form::model($user, ['method' => 'PATCH', 'route' => ['usuarios.update', $user->id]]) !!}
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="name">Nombre</label>
+                                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <label for="email">E-mail</label>
-                                        {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="email">E-mail</label>
+                                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        {!! Form::password('password', ['class' => 'form-control']) !!}
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            {!! Form::password('password', ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <label for="confirm-password">Confirmar Password</label>
-                                        {!! Form::password('confirm-password', ['class' => 'form-control']) !!}
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="confirm-password">Confirmar Password</label>
+                                            {!! Form::password('confirm-password', ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <label for="">Roles</label>
-                                        {!! Form::select('roles[]', $roles, $userRole, ['class' => 'form-control']) !!}
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Roles</label>
+                                            {!! Form::select('roles[]', $roles, $userRole, ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <button type="submit" class="btn btn-success m-1">Guardar</button>
-                                    <a class="btn btn-primary m-1" href="{{ route('usuarios.index') }}">Volver</a>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <button type="submit" class="btn btn-success m-1">Guardar</button>
+                                        <a class="btn btn-primary m-1" href="{{ route('usuarios.index') }}">Volver</a>
 
+                                    </div>
                                 </div>
-                            </div>
-                            {!! Form::close() !!}
+                                {!! Form::close() !!}
+                            @endcan
+
                         </div>
                     </div>
                 </div>

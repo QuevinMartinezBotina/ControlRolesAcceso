@@ -13,7 +13,7 @@
 
                             @if ($errors->any())
                                 <div class="alert alert-dark alert-dismissible fade show" role="alert">
-                                    <strong>¡Revise los campos!</strong>
+                                    <strong>¡Revise los campos! </strong>
                                     @foreach ($errors->all() as $error)
                                         <span class="badge badge-danger">{{ $error }}</span>
                                     @endforeach
@@ -23,28 +23,30 @@
                                 </div>
                             @endif
 
-                            <form action="{{ route('blogs.store') }}" method="POST">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="titulo">Título</label>
-                                            <input type="text" name="titulo" class="form-control">
+                            @can('crear-blog')
+                                <form action="{{ route('blogs.store') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="titulo">Título</label>
+                                                <input type="text" name="titulo" class="form-control">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
 
-                                        <div class="form-floating">
-                                            <textarea class="form-control" name="contenido"
-                                                style="height: 100px"></textarea>
-                                            <label for="contenido">Contenido</label>
+                                            <div class="form-floating">
+                                                <textarea class="form-control" name="contenido"
+                                                    style="height: 100px"></textarea>
+                                                <label for="contenido">Contenido</label>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success m-1 ">Guardar</button>
+                                            <a class="btn btn-primary m-1" href="{{ route('blogs.index') }}">Volver</a>
+
                                         </div>
-
-                                        <button type="submit" class="btn btn-success m-1 ">Guardar</button>
-                                        <a class="btn btn-primary m-1" href="{{ route('blogs.index') }}">Volver</a>
-
-                                    </div>
-                            </form>
+                                </form>
+                            @endcan
 
                         </div>
                     </div>

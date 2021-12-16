@@ -23,32 +23,33 @@
                                 </div>
                             @endif
 
-
-                            <form action="{{ route('blogs.update', $blog->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="titulo">Título</label>
-                                            <input type="text" name="titulo" class="form-control"
-                                                value="{{ $blog->titulo }}">
+                            @can('editar-blog')
+                                <form action="{{ route('blogs.update', $blog->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="titulo">Título</label>
+                                                <input type="text" name="titulo" class="form-control"
+                                                    value="{{ $blog->titulo }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
 
-                                        <div class="form-floating">
-                                            <label for="contenido">Contenido</label>
-                                            <textarea class="form-control" name="contenido"
-                                                style="height: 100px">{{ $blog->contenido }}</textarea>
+                                            <div class="form-floating">
+                                                <label for="contenido">Contenido</label>
+                                                <textarea class="form-control" name="contenido"
+                                                    style="height: 100px">{{ $blog->contenido }}</textarea>
+
+                                            </div>
+                                            <br>
+                                            <button type="submit" class="btn btn-success m-1">Guardar</button>
+                                            <a class="btn btn-primary m-1" href="{{ route('blogs.index') }}">Volver</a>
 
                                         </div>
-                                        <br>
-                                        <button type="submit" class="btn btn-success m-1">Guardar</button>
-                                        <a class="btn btn-primary m-1" href="{{ route('blogs.index') }}">Volver</a>
-
-                                    </div>
-                            </form>
+                                </form>
+                            @endcan
 
                         </div>
                     </div>

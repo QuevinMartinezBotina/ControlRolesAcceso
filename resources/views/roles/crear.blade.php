@@ -23,31 +23,32 @@
                                 </div>
                             @endif
 
-
-                            {!! Form::open(['route' => 'roles.store', 'method' => 'POST']) !!}
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <label for="">Nombre del Rol:</label>
-                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                            @can('crear-rol')
+                                {!! Form::open(['route' => 'roles.store', 'method' => 'POST']) !!}
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Nombre del Rol:</label>
+                                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <label for="">Permisos para este Rol:</label>
-                                        <br />
-                                        @foreach ($permission as $value)
-                                            <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
-                                                {{ $value->name }}</label>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Permisos para este Rol:</label>
                                             <br />
-                                        @endforeach
+                                            @foreach ($permission as $value)
+                                                <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
+                                                    {{ $value->name }}</label>
+                                                <br />
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-success m-1">Guardar</button>
-                            <a class="btn btn-primary m-1" href="{{ route('roles.index') }}">Volver</a>
+                                <button type="submit" class="btn btn-success m-1">Guardar</button>
+                                <a class="btn btn-primary m-1" href="{{ route('roles.index') }}">Volver</a>
+                                {!! Form::close() !!}
+                            @endcan
 
-                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
