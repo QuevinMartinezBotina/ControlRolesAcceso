@@ -10,12 +10,14 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+
                             @can('crear-usuario')
                                 <a class="btn btn-success mb-4" href="{{ route('usuarios.create') }}">Nuevo</a>
                             @endcan
 
                             @can('ver-usuario')
-                                <table id="dataTables" class="table table-striped mt-3 table-hover rounded  ">
+                                <table id="dataTables" class=" display nowrap table table-striped mt-3 table-hover "
+                                    cellspacing="0" width="100%">
                                     <thead class=" bg-primary text-white rounded">
                                         <tr class="text-white">
                                             <th class="text-white muted" style="display: none;">ID</th>
@@ -57,10 +59,12 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot class="pagination justify-content-end">
-                                        <tr>
-                                            {!! $usuarios->links() !!}
-                                        </tr>
+                                    <tfoot class="">
+                                        <th class="text-dark muted" style="display: none;">ID</th>
+                                        <th class="text-dark ">Nombre</th>
+                                        <th class="text-dark ">Correo</th>
+                                        <th class="text-dark ">Rol</th>
+                                        <th class="text-dark ">Acciones </th>
                                     </tfoot>
                                 </table>
                             @endcan

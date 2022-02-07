@@ -16,7 +16,8 @@
                             @endcan
 
                             @can('ver-blog')
-                                <table id="dataTables" class="table table-striped mt-2">
+                                <table id="dataTables" class="table table-striped mt-2 display nowrap" cellspacing="0"
+                                    width="100%">
                                     <thead style="background-color:#6777ef">
                                         <th style="display: none;">ID</th>
                                         <th style="color:#fff;">Titulo</th>
@@ -46,6 +47,15 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
+
+                                    <tfoot>
+                                        <tr>
+                                            <th style="display: none">ID</th>
+                                            <th style="">Titulo</th>
+                                            <th style="">Contenido</th>
+                                            <th style="">Acciones</th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             @endcan
 

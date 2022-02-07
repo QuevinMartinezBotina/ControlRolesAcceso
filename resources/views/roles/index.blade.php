@@ -16,8 +16,8 @@
                             @endcan
 
                             @can('ver-rol')
-                                <table id="dataTables" class="table table-striped mt-3 table-hover ">
-                                    <thead class=" bg-primary text-white">
+                                <table id="dataTables" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
+                                    <thead class="bg-primary text-white">
                                         <tr class="text-white">
                                             <th class="text-white ">Rol</th>
                                             <th class="text-white ">Acciones </th>
