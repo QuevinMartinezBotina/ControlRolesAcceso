@@ -42,18 +42,30 @@
                                                 </td>
 
                                                 <td>
-                                                    {{-- Botones de editar y eliminar --}}
-                                                    @can('editar-usuario')
-                                                        <a class="btn btn-primary"
-                                                            href="{{ route('usuarios.edit', $usuario->id) }}">Editar
-                                                        </a>
-                                                    @endcan
+                                                    <div class="row">
 
-                                                    @can('borrar-usuario')
-                                                        {!! Form::open(['method' => 'DELETE', 'route' => ['usuarios.destroy', $usuario->id], 'style' => 'display:inline ']) !!}
-                                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
-                                                        {!! Form::close() !!}
-                                                    @endcan
+                                                        <div class="col-md-12 col-12">
+
+                                                            <form class="formEliminar"
+                                                                action="{{ route('usuarios.destroy', $usuario->id) }}"
+                                                                method="post">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                {{-- Botones de editar --}}
+                                                                @can('editar-usuario')
+                                                                    <a class="btn btn-primary"
+                                                                        href="{{ route('usuarios.edit', $usuario->id) }}">Editar
+                                                                    </a>
+                                                                @endcan
+                                                                @can('borrar-usuario')
+
+                                                                    {{-- Boton eliminar --}}
+                                                                    <button class="btn btn-danger" type="submit">Borrar</button>
+                                                                @endcan
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
                                                 </td>
 
                                             </tr>

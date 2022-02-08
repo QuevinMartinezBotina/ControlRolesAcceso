@@ -3,47 +3,60 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Roles</h3>
+            <h3 class="page__heading">Documentos</h3>
         </div>
         <div class="section-body">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+                            @if ($message = Session::get('success'))
 
-                            @can('crear-rol')
-                                <a class="btn btn-success mb-4" href="{{ route('roles.create') }}">Nuevo</a>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                            @endif
+
+                            @can('crear-documento')
+                                <a class="btn btn-success mb-4" href="{{ route('documentos.create') }}">Nuevo</a>
                             @endcan
 
-                            @can('ver-rol')
-                                <table id="dataTables" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
+                            @can('ver-documento')
+                                <table id="dataTables" class="table table-bordered  display nowrap" cellspacing="0"
+                                    width="100%">
                                     <thead class="bg-primary text-white">
                                         <tr class="text-white">
-                                            <th class="text-white ">Rol</th>
+                                            <th class="text-white ">ID</th>
+                                            <th class="text-white ">Tipo</th>
                                             <th class="text-white ">Acciones </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($roles as $role)
+                                        @foreach ($documentos as $documento)
                                             <tr>
-                                                <td class="">{{ $role->name }}</td>
+                                                <td class="">{{ $documento->id }}</td>
+                                                <td class="">{{ $documento->tipo }}</td>
                                                 <td>
                                                     <div class="row">
 
                                                         <div class="col-md-12 col-12">
 
                                                             <form class="formEliminar"
-                                                                action="{{ route('roles.destroy', $role->id) }}"
+                                                                action="{{ route('documentos.destroy', $documento->id) }}"
                                                                 method="post">
                                                                 @method('DELETE')
                                                                 @csrf
                                                                 {{-- Botones de editar --}}
-                                                                @can('editar-rol')
+                                                                @can('editar-documento')
                                                                     <a class="btn btn-primary"
-                                                                        href="{{ route('roles.edit', $role->id) }}">Editar
+                                                                        href="{{ route('documentos.edit', $documento->id) }}">Editar
                                                                     </a>
                                                                 @endcan
-                                                                @can('borrar-rol')
+                                                                @can('borrar-documento')
 
                                                                     {{-- Boton eliminar --}}
                                                                     <button class="btn btn-danger" type="submit">Borrar</button>
@@ -52,12 +65,15 @@
 
                                                         </div>
                                                     </div>
+
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot class="pagination justify-content-end">
-
+                                    <tfoot class="">
+                                        <th class="">ID</th>
+                                        <th class="">Tipo</th>
+                                        <th class="">Acciones </th>
                                     </tfoot>
                                 </table>
                             @endcan

@@ -22,11 +22,21 @@
     </li>
 @endcan
 
-@can('ver-blog')
+{{-- @can('ver-blog')
 
     <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
         <a class=" nav-link  m-1" href="/blogs">
             <i class=" fas fa-blog"></i><span>Blogs</span>
+        </a>
+    </li>
+@endcan --}}
+
+
+@can('ver-documento')
+
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('documentos.index') }}">
+            <i class=" fas fa-id-card"></i><span>Documentos</span>
         </a>
     </li>
 @endcan

@@ -32,6 +32,11 @@ class SeederTablaPermisos extends Seeder
             'crear-usuario',
             'editar-usuario',
             'borrar-usuario',
+            //Tabla documentos
+            'ver-documento',
+            'crear-documento',
+            'editar-documento',
+            'borrar-documento',
         ];
         foreach ($permisos as $permiso) {
             Permission::create(['name' => $permiso]);

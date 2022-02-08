@@ -82,6 +82,9 @@ integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEUL
 {{-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script> --}}
 
+{{-- Sweet Alert --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!--   Datatables-->
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
 
@@ -119,6 +122,39 @@ integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEUL
             }
         };
     }(jQuery));
+</script>
+
+{{-- ********ESPACIO PAAR SCRIPTS PARA ACTIVAR ALGO******** --}}
+
+{{-- Alerta confirmación de eliminación de sweet alert --}}
+<script>
+    (function() {
+        'use strict'
+        //debemos crear la clase formEliminar dentro del form del boton borrar
+        //recordar que cada registro a eliminar esta contenido en un form
+        var forms = document.querySelectorAll('.formEliminar')
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    Swal.fire({
+                        title: '¿Confirma la eliminación del registro?',
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonColor: '#20c997',
+                        cancelButtonColor: '#6c757d',
+                        confirmButtonText: 'Confirmar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                            Swal.fire('¡Eliminado!',
+                                'El registro ha sido eliminado exitosamente.', 'success');
+                        }
+                    })
+                }, false)
+            })
+    })()
 </script>
 
 </html>
