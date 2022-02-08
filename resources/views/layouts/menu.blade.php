@@ -40,3 +40,12 @@
         </a>
     </li>
 @endcan
+
+@can('ver-estado')
+
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('estados.index') }}">
+            <i class=" fas fa-bell"></i><span>Estados</span>
+        </a>
+    </li>
+@endcan

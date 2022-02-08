@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Documento</h3>
+            <h3 class="page__heading">Editar Estado</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,22 +23,31 @@
                                 </div>
                             @endif
 
-                            @can('crear-documento')
-                                <form action="{{ route('documentos.update', $documento->id) }}" method="POST">
+                            @can('crear-estado')
+                                <form action="{{ route('estados.update', $estado->id) }}" method="POST">
                                     @csrf
                                     @method('PATCH')
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="tipo">Tipo de documento</label>
-                                                <input type="text" name="tipo" class="form-control"
-                                                    value="{{ $documento->tipo }}">
+                                                <label for="nom_estado">Nombre del Estado</label>
+                                                <input type="text" name="nom_estado" class="form-control"
+                                                    value="{{ $estado->nom_estado }}">
                                             </div>
                                         </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-2 w-50">
+                                            <div class="form-group">
+                                                <label for="color">Color del Estado</label>
+                                                <input type="color" name="color" class="form-control"
+                                                    value="{{ $estado->color }}">
+                                            </div>
+                                        </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-12">
 
                                             <button type="submit" class="btn btn-success m-1 ">Guardar</button>
-                                            <a class="btn btn-primary m-1" href="{{ route('documentos.index') }}">Volver</a>
+                                            <a class="btn btn-primary m-1" href="{{ route('estados.index') }}">Volver</a>
 
                                         </div>
                                 </form>
