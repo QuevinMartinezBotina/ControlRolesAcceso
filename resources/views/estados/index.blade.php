@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Estados
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -26,9 +30,9 @@
                             @endcan
 
                             @can('ver-estado')
-                                <table id="dataTables" class="table table-bordered  display nowrap" cellspacing="0"
-                                    width="100%">
-                                    <thead class="bg-primary text-white">
+                                <table id="dataTables" class="table table-bordered  display nowrap table-hover table-striped"
+                                    cellspacing="0" width="100%">
+                                    <thead class="avi-bg-grey text-white">
                                         <tr class="text-white">
                                             <th class="text-white ">ID</th>
                                             <th class="text-white ">Nombre Estado</th>

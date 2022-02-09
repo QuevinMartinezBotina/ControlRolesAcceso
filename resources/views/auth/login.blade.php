@@ -3,9 +3,9 @@
     Admin Login
 @endsection
 @section('content')
-    <div class="card card-danger">
+    <div class="card avi-border-green">
         <div class="card-header">
-            <h4 class="text-danger">Inicio de Sesión</h4>
+            <h4 class="avi-text-orange">Inicio de Sesión</h4>
         </div>
 
         <div class="card-body">
@@ -62,7 +62,7 @@
 
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-danger btn-lg btn-block" tabindex="4">
+                    <button type="submit" class="btn avi-boton-green btn-lg btn-block text-white" tabindex="4">
                         Login
                     </button>
                 </div>

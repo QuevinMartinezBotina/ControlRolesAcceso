@@ -3,9 +3,9 @@
     Registro
 @endsection
 @section('content')
-    <div class="card card-danger">
+    <div class="card avi-border-green">
         <div class="card-header">
-            <h4 class="text-danger">Registro</h4>
+            <h4 class="avi-text-orange">Registro</h4>
         </div>
 
         <div class="card-body pt-1">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-12 mt-4">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-danger btn-lg btn-block" tabindex="4">
+                            <button type="submit" class="btn text-white avi-boton-green btn-lg btn-block" tabindex="4">
                                 Registrar
                             </button>
                         </div>

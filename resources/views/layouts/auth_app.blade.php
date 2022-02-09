@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
     <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/avicampo.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,8 +26,8 @@
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
                         <div class="login-brand">
-                            <img src="https://avicolaelmadrono.com/wp-content/uploads/2015/02/avicampo-logo-e1432591797104.png"
-                                alt="logo" height="100" width="200" class="shadow-light">
+                            <img src="https://i.ibb.co/N2Gqfxg/new-avicampo.png" alt=" logo" height="150" width="200"
+                                class="w-75">
                         </div>
                         @yield('content')
                         <div class="simple-footer">

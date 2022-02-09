@@ -1,0 +1,90 @@
+/* Colors Background*/
+.avi-bg-green {
+    background: #0b9442 !important;
+}
+
+.avi-bg-orange {
+    background: #f58023 !important;
+}
+
+.avi-bg-red {
+    background: #c7202a;
+}
+
+.avi-bg-yellow {
+    background: #fcd057;
+}
+
+.avi-bg-grey {
+    background: #6d6c6b;
+}
+
+/* Colors Text*/
+.avi-text-green {
+    color: #0b9442;
+}
+
+.avi-text-orange {
+    color: #f58023 !important;
+}
+
+.avi-text-red {
+    color: #c7202a;
+}
+
+.avi-text-yellow {
+    color: #fcd057;
+}
+
+/* Colors Border*/
+.avi-border-green {
+    border-top: solid 3px #0b9442;
+}
+
+.avi-border-orange {
+    color: #f58023;
+}
+
+.avi-border-red {
+    color: #c7202a;
+}
+
+.avi-border-yellow {
+    border-top: solid 3px #fcd057;
+
+}
+
+/* Login */
+.avi-boton-green {
+    background: #0b9442;
+    transition: all 200ms;
+}
+
+.avi-boton-green:hover {
+    background: #168a4b !important;
+    transform: scale(1.02, 1.02);
+}
+
+.avi-boton-yellow {
+    background: #fcd057;
+    transition: all 200ms;
+}
+
+.avi-boton-yellow:hover {
+    background: #dbb54c !important;
+    transform: scale(1.02, 1.02);
+}
+
+
+/* Efecto menú slider */
+
+.main-sidebar .sidebar-menu li.active a {
+    color: #0b9442 !important;
+    font-weight: 600;
+}
+
+body.sidebar-mini .main-sidebar .sidebar-menu>li.active>a {
+    box-shadow: 0 4px 8px #acb5f6 !important;
+    background-color: #0b9442 !important;
+    color: #fff !important;
+}

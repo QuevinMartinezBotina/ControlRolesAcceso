@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Usuarios
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -16,9 +20,10 @@
                             @endcan
 
                             @can('ver-usuario')
-                                <table id="dataTables" class=" display nowrap table table-striped mt-3 table-hover "
-                                    cellspacing="0" width="100%">
-                                    <thead class=" bg-primary text-white rounded">
+                                <table id="dataTables"
+                                    class=" display nowrap table table-striped mt-3 table-hover table-bordered" cellspacing="0"
+                                    width="100%">
+                                    <thead class=" avi-bg-grey text-white rounded">
                                         <tr class="text-white">
                                             <th class="text-white muted" style="display: none;">ID</th>
                                             <th class="text-white ">Nombre</th>

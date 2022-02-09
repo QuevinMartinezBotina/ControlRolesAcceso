@@ -27,6 +27,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('web/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/avicampo.css') }}">
     @yield('page_css')
 
 
@@ -38,7 +39,7 @@
     <div id="app">
         <div class="main-wrapper main-wrapper-1 ">
             <div class="navbar-bg"></div>
-            <nav class="navbar navbar-expand-lg main-navbar">
+            <nav class="navbar navbar-expand-lg main-navbar avi-bg-orange ">
                 @include('layouts.header')
 
             </nav>
@@ -53,6 +54,7 @@
                 @include('layouts.footer')
             </footer>
         </div>
+
     </div>
 
     @include('profile.change_password')

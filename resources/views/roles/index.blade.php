@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Roles
+@endsection
+
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -16,8 +20,9 @@
                             @endcan
 
                             @can('ver-rol')
-                                <table id="dataTables" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
-                                    <thead class="bg-primary text-white">
+                                <table id="dataTables" class="table table-bordered  display nowrap table-hover table-striped"
+                                    cellspacing="0" width="100%">
+                                    <thead class="avi-bg-grey text-white">
                                         <tr class="text-white">
                                             <th class="text-white ">Rol</th>
                                             <th class="text-white ">Acciones </th>

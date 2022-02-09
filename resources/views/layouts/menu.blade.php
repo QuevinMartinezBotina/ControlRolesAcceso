@@ -1,4 +1,4 @@
-<li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+<li class="side-menus avi-text-green  {{ Request::is('*') ? 'active' : '' }}">
     <a class=" nav-link  m-1" href="/home">
         <i class=" fas fa-building"></i><span>Dashboard</span>
     </a>
