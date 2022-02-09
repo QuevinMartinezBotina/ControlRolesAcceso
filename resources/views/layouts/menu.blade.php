@@ -49,3 +49,13 @@
         </a>
     </li>
 @endcan
+
+
+@can('ver-sede')
+
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('sedes.index') }}">
+            <i class=" fas fa-city"></i><span>Sedes</span>
+        </a>
+    </li>
+@endcan

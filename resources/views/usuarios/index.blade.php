@@ -15,6 +15,17 @@
                     <div class="card">
                         <div class="card-body">
 
+                            @if ($message = Session::get('success'))
+
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                            @endif
+
                             @can('crear-usuario')
                                 <a class="btn btn-success mb-4" href="{{ route('usuarios.create') }}">Nuevo</a>
                             @endcan

@@ -8,6 +8,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\SedeController;
 
 
 
@@ -39,4 +40,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('documentos', DocumentoController::class);
     Route::resource('estados', EstadoController::class);
+    Route::resource('sedes', SedeController::class);
 });

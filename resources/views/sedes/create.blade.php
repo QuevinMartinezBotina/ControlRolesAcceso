@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Documento</h3>
+            <h3 class="page__heading">Crear estado</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -35,19 +35,33 @@
                             @endif
 
                             @can('crear-blog')
-                                <form action="{{ route('documentos.store') }}" method="POST">
+                                <form action="{{ route('sedes.store') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="tipo">Tipo de documento</label>
-                                                <input type="text" name="tipo" class="form-control">
+                                                <label for="nombre_sede">Nombre de la sede</label>
+                                                <input type="text" name="nombre_sede" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="ciudad">Ciudad</label>
+                                                <input type="text" name="ciudad" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="departamento">Departamento</label>
+                                                <input type="text" name="departamento" class="form-control">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
 
                                             <button type="submit" class="btn btn-success m-1 ">Guardar</button>
-                                            <a class="btn btn-primary m-1" href="{{ route('documentos.index') }}">Volver</a>
+                                            <a class="btn btn-primary m-1" href="{{ route('sedes.index') }}">Volver</a>
 
                                         </div>
                                 </form>

@@ -52,7 +52,7 @@ class EstadoController extends Controller
 
         Estado::create($request->all());
 
-        return redirect()->route('estados.index')->with('success', 'Estado creado con exito!');
+        return redirect()->route('estados.create')->with('success', 'Estado creado con exito!');
     }
 
     /**

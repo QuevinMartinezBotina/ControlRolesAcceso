@@ -52,7 +52,7 @@ class DocumentoController extends Controller
 
         Documento::create($request->all());
 
-        return redirect()->route('documentos.index')->with('success', 'Documento creado con exito!');
+        return redirect()->route('documentos.create')->with('success', 'Documento creado con exito!');
     }
 
     /**

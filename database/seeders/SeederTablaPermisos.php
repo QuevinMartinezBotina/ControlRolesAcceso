@@ -42,6 +42,11 @@ class SeederTablaPermisos extends Seeder
             'crear-estado',
             'editar-estado',
             'borrar-estado',
+            //Tabla sedes
+            'ver-sede',
+            'crear-sede',
+            'editar-sede',
+            'borrar-sede',
         ];
         foreach ($permisos as $permiso) {
             Permission::create(['name' => $permiso]);

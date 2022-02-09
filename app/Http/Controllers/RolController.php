@@ -29,7 +29,7 @@ class RolController extends Controller
         //Con paginación
         $roles = Role::paginate(5);
         return view('roles.index', compact('roles'));
-        //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $roles->links() !!} 
+        //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $roles->links() !!}
     }
 
     /**
@@ -59,7 +59,7 @@ class RolController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.create')->with('success', 'Rol creado con exito!');
     }
 
     /**
@@ -110,7 +110,7 @@ class RolController extends Controller
 
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('success', 'Actualizado con exito!');
     }
 
     /**
