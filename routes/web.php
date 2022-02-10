@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AreaController;
 use Illuminate\Support\Facades\Route;
 //Agregamos controladores
 use App\Http\Controllers\HomeController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\CarnetController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\SedeController;
+
 
 
 
@@ -43,4 +45,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('estados', EstadoController::class);
     Route::resource('sedes', SedeController::class);
     Route::resource('carnets', CarnetController::class);
+    Route::resource('areas', AreaController::class);
 });

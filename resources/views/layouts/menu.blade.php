@@ -69,3 +69,12 @@
         </a>
     </li>
 @endcan
+
+@can('ver-area')
+
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('areas.index') }}">
+            <i class=" fas fa-warehouse"></i><span>Areas</span>
+        </a>
+    </li>
+@endcan

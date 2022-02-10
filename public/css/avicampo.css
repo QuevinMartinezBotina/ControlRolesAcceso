@@ -21,7 +21,7 @@
 
 /* Colors Text*/
 .avi-text-green {
-    color: #0b9442;
+    color: #0b9442 !important;
 }
 
 .avi-text-orange {
