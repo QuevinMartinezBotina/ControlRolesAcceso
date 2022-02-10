@@ -59,3 +59,13 @@
         </a>
     </li>
 @endcan
+
+
+@can('ver-carnet')
+
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('carnets.index') }}">
+            <i class=" fas fa-id-badge"></i><span>Carnets</span>
+        </a>
+    </li>
+@endcan

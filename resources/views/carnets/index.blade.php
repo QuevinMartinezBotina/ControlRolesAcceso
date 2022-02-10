@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-    Estados
+    Carnets
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Estados</h3>
+            <h3 class="page__heading">Carnets</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,29 +23,29 @@
                                 </div>
                             @endif
 
-                            @can('crear-estado')
-                                <a class="btn btn-success mb-4" href="{{ route('estados.create') }}">Nuevo</a>
+                            @can('crear-carnet')
+                                <a class="btn btn-success mb-4" href="{{ route('carnets.create') }}">Nuevo</a>
                             @endcan
 
-                            @can('ver-estado')
+                            @can('ver-carnet')
                                 <table id="dataTables" class="table table-bordered  display nowrap table-hover table-striped"
                                     cellspacing="0" width="100%">
                                     <thead class="avi-bg-grey text-white">
                                         <tr class="text-white">
                                             <th class="text-white ">ID</th>
-                                            <th class="text-white ">Nombre Estado</th>
-                                            <th class="text-white ">Color Estado</th>
+                                            <th class="text-white ">Número de Carnet</th>
+                                            <th class="text-white ">Estado</th>
                                             <th class="text-white ">Acciones </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($estados as $estado)
+                                        @foreach ($carnets as $carnet)
                                             <tr>
-                                                <td class="">{{ $estado->id }}</td>
-                                                <td class="">{{ $estado->nom_estado }}</td>
+                                                <td class="">{{ $carnet->id }}</td>
+                                                <td class="">{{ $carnet->numero }}</td>
                                                 <td>
                                                     <span class="badge d-flex justify-content-center "
-                                                        style="background: {{ $estado->color }}">
+                                                        style="background: {{ $carnet->id_estado }}">
                                                     </span>
                                                 </td>
                                                 <td>
@@ -54,17 +54,17 @@
                                                         <div class="col-md-12 col-12">
 
                                                             <form class="formEliminar"
-                                                                action="{{ route('estados.destroy', $estado->id) }}"
+                                                                action="{{ route('carnets.destroy', $carnet->id) }}"
                                                                 method="post">
                                                                 @method('DELETE')
                                                                 @csrf
                                                                 {{-- Botones de editar --}}
-                                                                @can('editar-estado')
+                                                                @can('editar-carnet')
                                                                     <a class="btn btn-primary"
-                                                                        href="{{ route('estados.edit', $estado->id) }}">Editar
+                                                                        href="{{ route('carnets.edit', $carnet->id) }}">Editar
                                                                     </a>
                                                                 @endcan
-                                                                @can('borrar-estado')
+                                                                @can('borrar-carnet')
 
                                                                     {{-- Boton eliminar --}}
                                                                     <button class="btn btn-danger" type="submit">Borrar</button>
@@ -79,10 +79,10 @@
                                         @endforeach
                                     </tbody>
                                     <tfoot class="">
-                                        <th class="">ID</th>
-                                        <th class="">Nombre</th>
-                                        <th class="">Color</th>
-                                        <th class="">Acciones </th>
+                                        <th class=" ">ID</th>
+                                        <th class=" ">Número de Carnet</th>
+                                        <th class=" ">Estado</th>
+                                        <th class=" ">Acciones </th>
                                     </tfoot>
                                 </table>
                             @endcan

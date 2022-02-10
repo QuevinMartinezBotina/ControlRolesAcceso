@@ -14,6 +14,7 @@ class CreateSedesTable extends Migration
     public function up()
     {
         Schema::create('sedes', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
             $table->string('nombre_sede');
             $table->string('ciudad');
