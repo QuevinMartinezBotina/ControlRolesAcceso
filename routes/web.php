@@ -7,11 +7,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CargoController;
 use App\Http\Controllers\CarnetController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\SedeController;
-
 
 
 
@@ -46,4 +46,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('sedes', SedeController::class);
     Route::resource('carnets', CarnetController::class);
     Route::resource('areas', AreaController::class);
+    Route::resource('cargos', CargoController::class);
 });

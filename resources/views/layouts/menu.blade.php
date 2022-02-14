@@ -78,3 +78,13 @@
         </a>
     </li>
 @endcan
+
+
+@can('ver-cargo')
+
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('cargos.index') }}">
+            <i class=" fas fa-users"></i><span>Cargos</span>
+        </a>
+    </li>
+@endcan
