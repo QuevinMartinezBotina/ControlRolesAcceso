@@ -57,6 +57,23 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="id_cargo">Cargos</label>
+                                            <select name="id_cargo" class="form-select form-control">
+                                                <option class="avi-text-green" value="{{ $user->id }}">
+                                                    {{ $user->id_cargo }}
+                                                    <i class="avi-text-green">
+                                                        - Cargo Actual
+                                                    </i>
+                                                </option>
+                                                @foreach ($cargos as $cargo)
+                                                    <option class="bg-success" value="{{ $cargo->id }}">
+                                                        {{ $cargo->nom_cargo }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                         <button type="submit" class="btn btn-success m-1">Guardar</button>
                                         <a class="btn btn-primary m-1" href="{{ route('usuarios.index') }}">Volver</a>
 

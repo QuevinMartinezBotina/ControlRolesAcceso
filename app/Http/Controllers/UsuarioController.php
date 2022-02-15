@@ -100,10 +100,11 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $cargos = Cargo::all();
         $roles = Role::pluck('name', 'name')->all();
         $userRole = $user->roles->pluck('name', 'name')->all();
 
-        return view('usuarios.editar', compact('user', 'roles', 'userRole'));
+        return view('usuarios.editar', compact('user', 'roles', 'userRole', 'cargos'));
     }
 
 
@@ -120,7 +121,9 @@ class UsuarioController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'id_cargo' => 'required',
+
         ]);
 
         $input = $request->all();
