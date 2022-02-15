@@ -50,7 +50,14 @@ class CarnetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'numero' => 'required',
+            'id_estado' => 'required',
+        ]);
+
+        Carnet::create($request->all());
+
+        return redirect()->route('carnets.create')->with('success', 'Carnet creado con exito!');
     }
 
     /**
@@ -72,7 +79,8 @@ class CarnetController extends Controller
      */
     public function edit(Carnet $carnet)
     {
-        //
+        $estados = Estado::all();
+        return view('carnets.edit', compact('carnet', 'estados'));
     }
 
     /**
@@ -84,7 +92,15 @@ class CarnetController extends Controller
      */
     public function update(Request $request, Carnet $carnet)
     {
-        //
+        request()->validate([
+            'numero' => 'required',
+            'id_estado' => 'required',
+        ]);
+
+        $carnet->update($request->all());
+
+
+        return redirect()->route('carnets.index')->with('success', 'Actualizado con exito!');
     }
 
     /**
@@ -95,6 +111,8 @@ class CarnetController extends Controller
      */
     public function destroy(Carnet $carnet)
     {
-        //
+        $carnet->delete();
+
+        return redirect()->route('carnets.index');
     }
 }

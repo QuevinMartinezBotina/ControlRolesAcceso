@@ -44,8 +44,9 @@
                                                 <td class="">{{ $carnet->id }}</td>
                                                 <td class="">{{ $carnet->numero }}</td>
                                                 <td>
-                                                    <span class="badge d-flex justify-content-center "
-                                                        style="background: {{ $carnet->id_estado }}">
+                                                    <span class="badge d-flex justify-content-center p-2 text-dark fs-1"
+                                                        style="background: {{ $carnet->estado->color }}">
+                                                        {{ $carnet->estado->nom_estado }}
                                                     </span>
                                                 </td>
                                                 <td>
@@ -65,7 +66,6 @@
                                                                     </a>
                                                                 @endcan
                                                                 @can('borrar-carnet')
-
                                                                     {{-- Boton eliminar --}}
                                                                     <button class="btn btn-danger" type="submit">Borrar</button>
                                                                 @endcan

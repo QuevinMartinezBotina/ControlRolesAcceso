@@ -47,15 +47,15 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-2 w-50">
+                                        <div class="col-xs-12 col-sm-12 col-md-2 ">
                                             <div class="form-group">
                                                 <label for="id_estado">Estado del Carnet</label>
-                                                <select name="id_estado">
+                                                <select class="form-control" name="id_estado">
                                                     @foreach ($estados as $estado)
                                                         @if ($estado->modulo == 'carnets')
                                                             <option style="background: ; " value="{{ $estado->id }}">
                                                                 {{ $estado->nom_estado }}
-                                                                <span class="text-info">ff</span>
+                                                                <span class="text-info"></span>
                                                             </option>
                                                         @endif
                                                     @endforeach
@@ -63,7 +63,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-2 w-50">
+                                        {{-- <div class="col-xs-12 col-sm-12 col-md-2 w-50">
                                             <div class="form-group">
                                                 <label for="id_estado">Estado del Carnet</label>
                                                 <div name="id_estado" class="form-select">
@@ -80,7 +80,7 @@
                                                     @endforeach
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-xs-12 col-sm-12 col-md-12">
 
                                             <button type="submit" class="btn btn-success m-1 ">Guardar</button>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Estado;
 
 class Carnet extends Model
 {
@@ -20,6 +21,6 @@ class Carnet extends Model
 
     public function estado()
     {
-        return $this->hasOne('App\Models\Estado', 'id', 'id_estado');
+        return $this->hasOne(Estado::class, 'id', 'id_estado');
     }
 }

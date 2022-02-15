@@ -9,6 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Cargo;
 
 //Spatie control de acceso y roles
 use Spatie\Permission\Traits\HasRoles;
@@ -52,6 +53,6 @@ class User extends Authenticatable
     /* Para la relation con cargos */
     public function cargo()
     {
-        return $this->hasOne('App\Models\Cargo', 'id', 'id_cargo');
+        return $this->hasOne(Crago::class, 'id', 'id_cargo');
     }
 }
