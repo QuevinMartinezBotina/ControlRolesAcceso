@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCargosTable extends Migration
+class AddModuloToEstadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCargosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
-            $table->engine = "InnoDB";
-            $table->id();
-            $table->string('nom_cargo');
-            $table->timestamps();
+        Schema::table('estados', function (Blueprint $table) {
+            $table->string('modulo');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateCargosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargos');
+        Schema::table('estados', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -35,19 +35,21 @@
                                             <th class="text-white ">ID</th>
                                             <th class="text-white ">Nombre Estado</th>
                                             <th class="text-white ">Color Estado</th>
+                                            <th class="text-white ">Modulo del Estado </th>
                                             <th class="text-white ">Acciones </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($estados as $estado)
                                             <tr>
-                                                <td class="">{{ $estado->id }}</td>
+                                                <td class="">{{ ++$i }}</td>
                                                 <td class="">{{ $estado->nom_estado }}</td>
                                                 <td>
                                                     <span class="badge d-flex justify-content-center "
                                                         style="background: {{ $estado->color }}">
                                                     </span>
                                                 </td>
+                                                <td class="">{{ $estado->modulo }}</td>
                                                 <td>
                                                     <div class="row">
 
@@ -65,7 +67,6 @@
                                                                     </a>
                                                                 @endcan
                                                                 @can('borrar-estado')
-
                                                                     {{-- Boton eliminar --}}
                                                                     <button class="btn btn-danger" type="submit">Borrar</button>
                                                                 @endcan
@@ -82,6 +83,7 @@
                                         <th class="">ID</th>
                                         <th class="">Nombre</th>
                                         <th class="">Color</th>
+                                        <th class="">Modulo</th>
                                         <th class="">Acciones </th>
                                     </tfoot>
                                 </table>

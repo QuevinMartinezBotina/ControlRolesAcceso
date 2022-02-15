@@ -12,14 +12,12 @@
                         <div class="card-body">
 
                             @if ($message = Session::get('success'))
-
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>{{ $message }}</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-
                             @endif
 
                             @if ($errors->any())
@@ -69,6 +67,18 @@
                                         <div class="form-group">
                                             <label for="name">Roles</label>
                                             {!! Form::select('roles[]', $roles, [], ['class' => 'form-control']) !!}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="id_cargo">Cargos</label>
+                                            <select name="id_cargo" class="form-select form-control">
+                                                @foreach ($cargos as $cargo)
+                                                    <option class="bg-success" value="{{ $cargo->id }}">
+                                                        {{ $cargo->nom_cargo }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 

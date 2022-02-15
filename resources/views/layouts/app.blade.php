@@ -108,6 +108,8 @@ integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEUL
 <!-- Template JS File -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>
 <script src="{{ asset('web/js/scripts.js') }}"></script>
+<script src="{{ asset('js/avicampo.js') }}"></script>
+
 <script src="{{ mix('assets/js/profile.js') }}"></script>
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
 @yield('page_js')
@@ -126,39 +128,6 @@ integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEUL
             }
         };
     }(jQuery));
-</script>
-
-{{-- ********ESPACIO PAAR SCRIPTS PARA ACTIVAR ALGO******** --}}
-
-{{-- Alerta confirmación de eliminación de sweet alert --}}
-<script>
-    (function() {
-        'use strict'
-        //debemos crear la clase formEliminar dentro del form del boton borrar
-        //recordar que cada registro a eliminar esta contenido en un form
-        var forms = document.querySelectorAll('.formEliminar')
-        Array.prototype.slice.call(forms)
-            .forEach(function(form) {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    Swal.fire({
-                        title: '¿Confirma la eliminación del registro?',
-                        icon: 'info',
-                        showCancelButton: true,
-                        confirmButtonColor: '#20c997',
-                        cancelButtonColor: '#6c757d',
-                        confirmButtonText: 'Confirmar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            this.submit();
-                            Swal.fire('¡Eliminado!',
-                                'El registro ha sido eliminado exitosamente.', 'success');
-                        }
-                    })
-                }, false)
-            })
-    })()
 </script>
 
 </html>

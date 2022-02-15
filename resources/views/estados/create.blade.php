@@ -12,14 +12,12 @@
                         <div class="card-body">
 
                             @if ($message = Session::get('success'))
-
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>{{ $message }}</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-
                             @endif
 
                             @if ($errors->any())
@@ -45,12 +43,21 @@
                                             </div>
                                         </div>
 
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="modulo">Modulo al que pertenece el estado</label>
+                                                <input type="text" name="modulo" class="form-control">
+                                            </div>
+                                        </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-2 w-50">
                                             <div class="form-group">
                                                 <label for="color">Color del Estado</label>
                                                 <input type="color" name="color" class="form-control">
                                             </div>
                                         </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-12">
 
                                             <button type="submit" class="btn btn-success m-1 ">Guardar</button>

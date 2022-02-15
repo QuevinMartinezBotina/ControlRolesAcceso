@@ -22,9 +22,10 @@ class EstadoController extends Controller
      */
     public function index()
     {
+        $i = 0;
         $estados = Estado::all();
 
-        return view('estados.index', compact('estados'));
+        return view('estados.index', compact('estados', 'i'));
     }
 
     /**
@@ -48,9 +49,17 @@ class EstadoController extends Controller
         request()->validate([
             'nom_estado' => 'required',
             'color' => 'required',
+            'modulo' => 'required',
         ]);
 
-        Estado::create($request->all());
+        $estado = new Estado();
+
+        $estado->nom_estado = $request->nom_estado;
+        $estado->color = $request->color;
+        $estado->modulo = strtolower($request->modulo);
+        $estado->save();
+
+        /* Estado::create($request->all()); */
 
         return redirect()->route('estados.create')->with('success', 'Estado creado con exito!');
     }
@@ -86,12 +95,25 @@ class EstadoController extends Controller
      */
     public function update(Request $request, Estado $estado)
     {
-        request()->validate([
+        /* request()->validate([
             'nom_estado' => 'required',
             'color' => 'required',
         ]);
 
-        $estado->update($request->all());
+        $estado->update($request->all()); */
+
+        request()->validate([
+            'nom_estado' => 'required',
+            'color' => 'required',
+            'modulo' => 'required',
+        ]);
+
+        $estado = Estado::find($estado->id);
+
+        $estado->nom_estado = $request->nom_estado;
+        $estado->color = $request->color;
+        $estado->modulo = strtolower($request->modulo);
+        $estado->update();
 
         return redirect()->route('estados.index')->with('success', 'Actualizado con exito!');
     }

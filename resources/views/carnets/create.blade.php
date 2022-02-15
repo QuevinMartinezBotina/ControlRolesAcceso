@@ -52,11 +52,12 @@
                                                 <label for="id_estado">Estado del Carnet</label>
                                                 <select name="id_estado">
                                                     @foreach ($estados as $estado)
-                                                        <option style="background: {{ $estado->color }} ; "
-                                                            value="{{ $estado->id }}">
-                                                            {{ $estado->nom_estado }}
-                                                            <span class="text-info">ff</span>
-                                                        </option>
+                                                        @if ($estado->modulo == 'carnets')
+                                                            <option style="background: ; " value="{{ $estado->id }}">
+                                                                {{ $estado->nom_estado }}
+                                                                <span class="text-info">ff</span>
+                                                            </option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -67,13 +68,15 @@
                                                 <label for="id_estado">Estado del Carnet</label>
                                                 <div name="id_estado" class="form-select">
                                                     @foreach ($estados as $estado)
-                                                        <span style="" value="{{ $estado->id }}">
-                                                            {{ $estado->nom_estado }}{{ $estado->color }}
-                                                        </span>
-                                                        <span style="background: {{ $estado->color }}"
-                                                            value="{{ $estado->id }}">
-                                                            .
-                                                        </span>
+                                                        @if ($estado->modulo == 'carnets')
+                                                            <span style="" value="{{ $estado->id }}">
+                                                                {{ $estado->nom_estado }}{{ $estado->color }}
+                                                            </span>
+                                                            <span style="background: {{ $estado->color }}"
+                                                                value="{{ $estado->id }}">
+                                                                .
+                                                            </span>
+                                                        @endif
                                                     @endforeach
                                                 </div>
                                             </div>

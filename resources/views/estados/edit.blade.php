@@ -36,6 +36,14 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <label for="modulo">Modulo al que pertenece el estado</label>
+                                                <input type="text" name="modulo" class="form-control"
+                                                    value="{{ $estado->modulo }}">
+                                            </div>
+                                        </div>
+
                                         <div class="col-xs-12 col-sm-12 col-md-2 w-50">
                                             <div class="form-group">
                                                 <label for="color">Color del Estado</label>
@@ -43,6 +51,8 @@
                                                     value="{{ $estado->color }}">
                                             </div>
                                         </div>
+
+
 
                                         <div class="col-xs-12 col-sm-12 col-md-12">
 

@@ -84,7 +84,7 @@
 
     <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
         <a class=" nav-link  m-1" href="{{ route('cargos.index') }}">
-            <i class=" fas fa-users"></i><span>Cargos</span>
+            <i class=" fas fa-user-cog"></i><span>Cargos</span>
         </a>
     </li>
 @endcan

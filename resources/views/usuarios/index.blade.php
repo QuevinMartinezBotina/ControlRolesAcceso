@@ -16,14 +16,12 @@
                         <div class="card-body">
 
                             @if ($message = Session::get('success'))
-
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>{{ $message }}</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-
                             @endif
 
                             @can('crear-usuario')
@@ -40,6 +38,7 @@
                                             <th class="text-white ">Nombre</th>
                                             <th class="text-white ">Correo</th>
                                             <th class="text-white ">Rol</th>
+                                            <th class="text-white ">Cargo</th>
                                             <th class="text-white ">Acciones </th>
                                         </tr>
                                     </thead>
@@ -56,6 +55,7 @@
                                                         @endforeach
                                                     @endif
                                                 </td>
+                                                <td class="">{{ $usuario->id_cargo }}</td>
 
                                                 <td>
                                                     <div class="row">
@@ -92,6 +92,7 @@
                                         <th class="text-dark ">Nombre</th>
                                         <th class="text-dark ">Correo</th>
                                         <th class="text-dark ">Rol</th>
+                                        <th class="text-dark ">Cargo</th>
                                         <th class="text-dark ">Acciones </th>
                                     </tfoot>
                                 </table>

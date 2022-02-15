@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cargo;
 use Illuminate\Http\Request;
 
 //agregamos lo siguiente
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +35,8 @@ class UsuarioController extends Controller
 
         //Con paginación
         $usuarios = User::paginate(5);
-        return view('usuarios.index', compact('usuarios'));
+        $cargos = Cargo::paginate(5);
+        return view('usuarios.index', compact('usuarios', 'cargos'));
 
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
@@ -49,7 +50,9 @@ class UsuarioController extends Controller
     {
         //aqui trabajamos con name de las tablas de users
         $roles = Role::pluck('name', 'name')->all();
-        return view('usuarios.crear', compact('roles'));
+        $cargos = Cargo::all();
+
+        return view('usuarios.crear', compact('roles', 'cargos'));
     }
 
     /**
@@ -64,7 +67,8 @@ class UsuarioController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'id_cargo' => 'required',
         ]);
 
         $input = $request->all();

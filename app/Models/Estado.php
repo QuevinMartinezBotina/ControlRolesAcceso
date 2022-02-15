@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Estado extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom_estado', 'color'];
+    protected $fillable = ['nom_estado', 'color', 'modulo'];
 }
