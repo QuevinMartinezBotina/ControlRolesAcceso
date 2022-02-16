@@ -12,6 +12,9 @@ use App\Http\Controllers\CarnetController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\SedeController;
+use App\Http\Controllers\VisitaController;
+
+
 
 
 
@@ -47,4 +50,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('carnets', CarnetController::class);
     Route::resource('areas', AreaController::class);
     Route::resource('cargos', CargoController::class);
+    Route::resource('visitas', VisitaController::class);
 });
