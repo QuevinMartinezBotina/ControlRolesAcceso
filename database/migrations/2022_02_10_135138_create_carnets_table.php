@@ -16,7 +16,7 @@ class CreateCarnetsTable extends Migration
         Schema::create('carnets', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
-            $table->integer('numero');
+            $table->bigInteger('numero');
             $table->bigInteger("id_estado")->unsigned();
             $table->timestamps();
             $table->foreign("id_estado")->references('id')->on("estados")

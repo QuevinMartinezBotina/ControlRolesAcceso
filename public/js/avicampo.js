@@ -1,3 +1,12 @@
+/* Vnetana Modal */
+$("#crearUsuario").on("click", () => {
+    titleForm = "Crear nuevo usuario";
+    update = false;
+    $("#title-form").text(titleForm);
+    $("#formNuevoUsuario").modal("show");
+});
+
+
 (function () {
     'use strict'
     //debemos crear la clase formEliminar dentro del form del boton borrar

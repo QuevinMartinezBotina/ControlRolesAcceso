@@ -72,7 +72,7 @@ class VisitaController extends Controller
             'id_sede' => 'required',
         ]);
 
-        Visita::created($request->all());
+        Visita::create($request->all());
 
         return redirect()->route('visitas.create')->with('success', 'Visita creada con exito!');
     }
@@ -85,7 +85,7 @@ class VisitaController extends Controller
      */
     public function show(Visita $visita)
     {
-        //
+        return view('visitas.show', compact('visita'));
     }
 
     /**
@@ -96,7 +96,10 @@ class VisitaController extends Controller
      */
     public function edit(Visita $visita)
     {
-        //
+        $documentos = Documento::all();
+        $areas = Area::all();
+        $sedes = Sede::all();
+        return view('visitas.edit', compact('documentos', 'areas', 'sedes', 'visita'));
     }
 
     /**
@@ -108,7 +111,28 @@ class VisitaController extends Controller
      */
     public function update(Request $request, Visita $visita)
     {
-        //
+        $this->validate($request, [
+            'nom_visitante' => 'required',
+            'num_documento' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required',
+            'nom_empresa' => 'required',
+            'arl_empresa' => 'required',
+            'motivo_visita' => 'required',
+            /* 'observaciones' => 'required', */
+            'fecha_programada' => 'required',
+            /* 'fecha_visita' => 'required', */
+            /* 'placa' => 'required',
+            'color' => 'required',
+            'tipo' => 'required', */
+            'id_documento' => 'required',
+            'id_area' => 'required',
+            'id_sede' => 'required',
+        ]);
+
+        $visita->update($request->all());
+
+        return redirect()->route('visitas.index')->with('success', 'Actualizado con exito!');
     }
 
     /**
@@ -119,6 +143,8 @@ class VisitaController extends Controller
      */
     public function destroy(Visita $visita)
     {
-        //
+        $visita->delete();
+
+        return redirect()->route('visitas.index');
     }
 }

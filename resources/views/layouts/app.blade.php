@@ -49,7 +49,7 @@
                 @include('layouts.sidebar')
             </div>
             <!-- Main Content -->
-            <div class="main-content">
+            <div class="main-content ">
                 @yield('content')
             </div>
             <footer class="main-footer">

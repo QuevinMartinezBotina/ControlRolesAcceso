@@ -18,18 +18,18 @@ class CreateVisitasTable extends Migration
 
             $table->id();
             $table->String('nom_visitante');
-            $table->integer('num_documento');
-            $table->integer('telefono');
+            $table->bigInteger('num_documento');
+            $table->bigInteger('telefono');
             $table->String('correo');
             $table->String('nom_empresa');
             $table->String('arl_empresa');
             $table->String('motivo_visita');
-            $table->String('observaciones');
+            $table->String('observaciones')->nullable();
             $table->timestamp('fecha_programada');
-            $table->timestamp('fecha_visita');
-            $table->String('placa');
-            $table->String('color');
-            $table->String('tipo');
+            $table->timestamp('fecha_visita')->nullable();
+            $table->String('placa')->nullable();
+            $table->String('color')->nullable();
+            $table->String('tipo')->nullable();
 
             /* Llaves foraneas */
             $table->bigInteger("id_documento")->unsigned();
