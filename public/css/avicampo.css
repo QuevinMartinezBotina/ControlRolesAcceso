@@ -8,11 +8,11 @@
 }
 
 .avi-bg-red {
-    background: #c7202a;
+    background: #c7202a !important;
 }
 
 .avi-bg-yellow {
-    background: #fcd057;
+    background: #fcd057 !important;
 }
 
 .avi-bg-grey {
@@ -40,6 +40,7 @@
 .avi-border-green {
     border-top: solid 3px #0b9442;
 }
+
 
 .avi-border-orange {
     color: #f58023;
@@ -87,4 +88,59 @@ body.sidebar-mini .main-sidebar .sidebar-menu>li.active>a {
     box-shadow: 0 4px 8px #acb5f6 !important;
     background-color: #0b9442 !important;
     color: #fff !important;
+}
+
+
+/* Tarjetas de show*/
+
+.avi-icon-xl {
+    font-size: 80px !important;
+}
+
+/* ---- Target Green */
+.avi-target-green {
+    border-left: solid 10px #0b9442 !important;
+    border-right: solid 1px #0b9442 !important;
+    border-top: solid 1px #0b9442 !important;
+    border-bottom: solid 1px #0b9442 !important;
+    transition: all 450ms;
+}
+
+.avi-target-green:hover {
+    /* border: solid 0px !important; */
+    background: #0b9442 !important;
+    color: white !important;
+    transform: scale(1.02, 1.02);
+    box-shadow: 5px 5px 10px rgb(94, 94, 94);
+}
+
+.avi-target-green:hover .avi-text-green {
+    /* border: solid 0px !important; */
+
+    color: white !important;
+
+}
+
+/* ---- Target Orange */
+.avi-target-orange {
+    border-left: solid 10px #f58023 !important;
+    border-right: solid 1px #f58023 !important;
+    border-top: solid 1px #f58023 !important;
+    border-bottom: solid 1px #f58023 !important;
+    transition: all 450ms;
+}
+
+.avi-target-orange:hover {
+    /* border: solid 0px !important; */
+    background: #f58023 !important;
+    color: white !important;
+    transform: scale(1.02, 1.02);
+    box-shadow: 5px 5px 10px rgb(94, 94, 94);
+
+}
+
+
+
+.avi-icon-info {
+    font-size: 17px;
 }

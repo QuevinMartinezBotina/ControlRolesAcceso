@@ -43,7 +43,7 @@
                                             <div class="form-group">
                                                 <label for="id_user">Jefe del Area</label>
                                                 <select name="id_user" class="form-select form-control">
-                                                    <option class="avi-text-green" value="{{ $area->id }}">
+                                                    <option class="avi-text-green" value="{{ $area->id_user }}">
                                                         {{ $area->user->name }} -
                                                         <i class="avi-text-green">Jefe actual</i>
                                                     </option>
