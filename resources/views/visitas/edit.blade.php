@@ -151,8 +151,8 @@
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="fecha_visita">Fecha en la que se realizo la visita</label>
-                                                <input value="{{ $visita->fecha_visita }}" type="date" name="fecha_visita"
-                                                    class="form-control">
+                                                <input value="{{ date('Y-m-d', strtotime($visita->fecha_visita)) }}"
+                                                    type="date" name="fecha_visita" class="form-control">
                                                 {{-- <p class="text-muted">No seleccione fecha, este campo se deja vacio hasta el
                                                     día de visita a las
                                                     instalaciones</p> --}}
