@@ -44,12 +44,56 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <label for="">Permisos para este Rol:</label>
-                                            <br />
-                                            @foreach ($permission as $value)
-                                                <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
-                                                    {{ $value->name }}</label>
-                                                <br />
-                                            @endforeach
+                                            <div class="row d-flex justify-content-center">
+
+                                                {{-- Ver --}}
+                                                <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permisos de visualización</strong> </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 3) == 'ver')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+
+                                                {{-- crear --}}
+                                                <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permisos de Creación</strong> </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 5) == 'crear')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+
+                                                {{-- editar --}}
+                                                <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permisos de Edición</strong> </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 6) == 'editar')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+
+                                                {{-- borrar --}}
+                                                <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permisos de Eliminación</strong> </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 6) == 'borrar')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
