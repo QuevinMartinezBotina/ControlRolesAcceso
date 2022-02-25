@@ -51,4 +51,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('areas', AreaController::class);
     Route::resource('cargos', CargoController::class);
     Route::resource('visitas', VisitaController::class);
+    /*
+    ?Espacio para ruta de aprobaciones
+    */
+    Route::get('/aprobaciones', [VisitaController::class, 'aprobaciones'])->name('aprobaciones');
+    Route::patch('/aprobaciones/{visita}/aprobar', [VisitaController::class, 'aprobar'])->name('aprobaciones.aprobar');
+    Route::patch('/aprobaciones/{visita}/denegar', [VisitaController::class, 'denegar'])->name('aprobaciones.denegar');
 });

@@ -20,7 +20,6 @@ class CreateCarnetsTable extends Migration
             $table->bigInteger("id_estado")->unsigned();
             $table->timestamps();
             $table->foreign("id_estado")->references('id')->on("estados")
-                ->onDelete("cascade")
                 ->onUpdate('cascade');
         });
     }

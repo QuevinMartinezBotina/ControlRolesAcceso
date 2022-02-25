@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIdCargoToUsersTable extends Migration
+class AddIdEstadoToVisitasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddIdCargoToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger("id_cargo")->unsigned()->nullable();
+        Schema::table('visitas', function (Blueprint $table) {
+            $table->bigInteger("id_estado")->unsigned()->nullable();
 
-            $table->foreign("id_cargo")->references('id')->on("cargos")
+            $table->foreign("id_estado")->references('id')->on("estados")
                 ->onUpdate('cascade');
         });
     }
@@ -28,7 +28,7 @@ class AddIdCargoToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('visitas', function (Blueprint $table) {
             //
         });
     }

@@ -89,3 +89,11 @@
         </a>
     </li>
 @endcan
+
+@can('ver-visita')
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('aprobaciones') }}">
+            <i class=" fas fa-calendar-check"></i><span>Aprobaciones</span>
+        </a>
+    </li>
+@endcan

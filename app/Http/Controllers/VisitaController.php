@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Area;
 use App\Models\Documento;
+use App\Models\Estado;
 use App\Models\Sede;
 use App\Models\Visita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+
 use League\CommonMark\Block\Element\Document;
 
 class VisitaController extends Controller
@@ -51,8 +55,28 @@ class VisitaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Visita $visita)
     {
+
+        /* *
+        *  Para traer el correo actual del area
+        * */
+
+        /* $users = DB::table('users')
+            ->join('areas', 'users.id', '=', 'areas.id_user')
+            ->select('users.email')
+            ->where('areas.id', '=', $visita->id_area)
+            ->get();
+
+
+        foreach ($users as $user) {
+
+            $emailJefeArea = $user->email;
+        }
+
+        echo $emailJefeArea;
+        exit; */
+
         $this->validate($request, [
             'nom_visitante' => 'required',
             'num_documento' => 'required',
@@ -74,6 +98,7 @@ class VisitaController extends Controller
 
         Visita::create($request->all());
 
+
         return redirect()->route('visitas.create')->with('success', 'Visita creada con exito!');
     }
 
@@ -83,8 +108,9 @@ class VisitaController extends Controller
      * @param  \App\Models\Visita  $visita
      * @return \Illuminate\Http\Response
      */
-    public function show(Visita $visita)
+    public function show(Request $request, Visita $visita)
     {
+
         return view('visitas.show', compact('visita'));
     }
 
@@ -146,5 +172,52 @@ class VisitaController extends Controller
         $visita->delete();
 
         return redirect()->route('visitas.index');
+    }
+
+    /*
+    *
+    * Apartado de las aprobaciones
+    *
+    */
+
+    public function aprobaciones()
+    {
+        $visitas = Visita::all();
+
+        return view('visitas.aprobations', compact('visitas'));
+    }
+
+    public function aprobar(Request $request, Visita $visita)
+    {
+
+        $estados = Estado::all('id', 'nom_estado');
+
+        foreach ($estados as $estado) {
+            if ($estado->nom_estado == 'Visita Aprobada') {
+                $id_EstadoArea = $estado->id;
+            }
+        }
+
+        /* echo  $id_EstadoArea;
+        exit; */
+
+        $visita =  Visita::find($visita->id);
+        $visita->id_estado = $id_EstadoArea;
+
+        $visita->update();
+
+        /* Estado::create($request->all()); */
+
+        return redirect()->route('aprobaciones')->with('success', 'Visita aprobada con exito!');
+    }
+
+    public function denegar(Request $request, Visita $visita)
+    {
+        $visita = Visita::find($visita->id);
+        $visita->id_estado = null;
+
+        $visita->update();
+
+        return redirect()->route('aprobaciones')->with('success', 'Visita denegada con exito!');
     }
 }

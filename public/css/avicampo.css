@@ -76,6 +76,18 @@
     transform: scale(1.02, 1.02);
 }
 
+.avi-boton-red {
+    background: #c7202a;
+    transition: all 200ms;
+}
+
+.avi-boton-red:hover {
+    background: #c7202a !important;
+    transform: scale(1.02, 1.02);
+    border: 1px solid white !important;
+
+}
+
 
 /* Efecto menú slider */
 
@@ -139,6 +151,36 @@ body.sidebar-mini .main-sidebar .sidebar-menu>li.active>a {
 
 }
 
+/* ---- Target red */
+.avi-target-red {
+    border-left: solid 10px #c7202a !important;
+    border-right: solid 1px #c7202a !important;
+    border-top: solid 1px #c7202a !important;
+    border-bottom: solid 1px #c7202a !important;
+    transition: all 450ms;
+}
+
+.avi-target-red:hover {
+    /* border: solid 0px !important; */
+    background: #c7202a !important;
+    color: white !important;
+    transform: scale(1.02, 1.02);
+    box-shadow: 5px 5px 10px rgb(94, 94, 94);
+}
+
+.avi-target-red:hover .avi-text-green {
+    /* border: solid 0px !important; */
+
+    color: white !important;
+
+}
+
+.avi-target-red:hover .avi-boton-red {
+    /* border: solid 0px !important; */
+
+    border: 1px solid white !important;
+
+}
 
 
 .avi-icon-info {

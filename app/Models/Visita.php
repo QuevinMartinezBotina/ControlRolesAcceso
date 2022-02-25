@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Documento;
 use App\Models\Area;
 use App\Models\Sede;
+use App\Models\Estado;
 use League\CommonMark\Block\Element\Document;
 
 class Visita extends Model
@@ -40,7 +41,7 @@ class Visita extends Model
      * @var array
      */
     protected $fillable = [
-        'nom_visitante', 'num_documento', 'telefono', 'correo', 'nom_empresa', 'arl_empresa', 'motivo_visita', 'observaciones', 'fecha_programada', 'fecha_visita', 'placa', 'color', 'tipo', 'id_documento', 'id_area', 'id_sede'
+        'nom_visitante', 'num_documento', 'telefono', 'correo', 'nom_empresa', 'arl_empresa', 'motivo_visita', 'observaciones', 'fecha_programada', 'fecha_visita', 'placa', 'color', 'tipo', 'id_documento', 'id_area', 'id_sede', 'id_estado'
     ];
 
 
@@ -60,5 +61,10 @@ class Visita extends Model
     public function sede()
     {
         return $this->hasOne(Sede::class, 'id', 'id_sede');
+    }
+
+    public function estado()
+    {
+        return $this->hasOne(Estado::class, 'id', 'id_estado');
     }
 }

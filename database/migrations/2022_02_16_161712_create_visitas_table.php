@@ -37,15 +37,12 @@ class CreateVisitasTable extends Migration
             $table->bigInteger("id_sede")->unsigned();
 
             $table->foreign("id_documento")->references('id')->on("documentos")
-                ->onDelete("cascade")
                 ->onUpdate('cascade');
 
             $table->foreign("id_area")->references('id')->on("areas")
-                ->onDelete("cascade")
                 ->onUpdate('cascade');
 
             $table->foreign("id_sede")->references('id')->on("sedes")
-                ->onDelete("cascade")
                 ->onUpdate('cascade');
 
             $table->timestamps();

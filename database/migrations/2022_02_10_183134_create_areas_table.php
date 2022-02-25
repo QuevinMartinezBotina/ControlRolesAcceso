@@ -23,7 +23,6 @@ class CreateAreasTable extends Migration
             $table->timestamps();
 
             $table->foreign("id_user")->references('id')->on("users")
-                ->onDelete("cascade")
                 ->onUpdate('cascade');
         });
     }
