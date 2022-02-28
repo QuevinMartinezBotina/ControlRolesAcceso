@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailAutorizacionesVisitas;
 use App\Models\Area;
 use App\Models\Documento;
 use App\Models\Estado;
@@ -9,6 +10,7 @@ use App\Models\Sede;
 use App\Models\Visita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 
 use League\CommonMark\Block\Element\Document;
@@ -55,27 +57,31 @@ class VisitaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Visita $visita)
+    public function store(Request $request)
     {
 
         /* *
         *  Para traer el correo actual del area
         * */
 
-        /* $users = DB::table('users')
+        $users = DB::table('users')
             ->join('areas', 'users.id', '=', 'areas.id_user')
             ->select('users.email')
-            ->where('areas.id', '=', $visita->id_area)
+            ->where('areas.id', '=', $request->id_area)
             ->get();
-
 
         foreach ($users as $user) {
 
             $emailJefeArea = $user->email;
         }
 
-        echo $emailJefeArea;
-        exit; */
+        $correo = new  EmailAutorizacionesVisitas;
+        Mail::to($emailJefeArea)->send($correo);
+
+
+        echo "Mensaje enviado a: " . $emailJefeArea;
+
+        exit;
 
         $this->validate($request, [
             'nom_visitante' => 'required',

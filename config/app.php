@@ -178,6 +178,10 @@ return [
         //Spatie gestor de acceso y roles
         Spatie\Permission\PermissionServiceProvider::class,
 
+        /* *
+        * Para poder ponerle estilos css o bootstrap a correos de Laravel
+        * */
+        Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider::class,
     ],
 
     /*

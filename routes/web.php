@@ -13,10 +13,9 @@ use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\VisitaController;
-
-
-
-
+use App\Mail\EmailAutorizacionesVisitas;
+use App\Mail\ReportesAutorizacionesVisitas;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +56,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/aprobaciones', [VisitaController::class, 'aprobaciones'])->name('aprobaciones');
     Route::patch('/aprobaciones/{visita}/aprobar', [VisitaController::class, 'aprobar'])->name('aprobaciones.aprobar');
     Route::patch('/aprobaciones/{visita}/denegar', [VisitaController::class, 'denegar'])->name('aprobaciones.denegar');
+    /*
+    ?Para envio de correos
+    */
+    Route::get('/aprobaciones/emails', function () {
+
+        return view('emails.EmailVisitas');
+
+        /* $correo = new  EmailAutorizacionesVisitas;
+        Mail::to('santiiiago4@gmail.com')->send($correo);
+
+        return "Mensaje enviado"; */
+    });
 });
