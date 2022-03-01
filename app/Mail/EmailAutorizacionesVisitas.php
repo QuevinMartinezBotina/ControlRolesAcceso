@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Visita;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,7 +12,13 @@ class EmailAutorizacionesVisitas extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'Visita instalación';
+    /**
+     * The order instance.
+     *
+     * @var \App\Models\Visita
+     */
+
+    public $request;
 
 
     /**
@@ -19,9 +26,9 @@ class EmailAutorizacionesVisitas extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($request)
     {
-        //
+        $this->request = $request;
     }
 
     /**
@@ -31,6 +38,9 @@ class EmailAutorizacionesVisitas extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.EmailVisitas'/* , compact('emailJefeArea') */);
+        return $this->view('emails.EmailVisitas')/* ->with([
+            'nameVisitante' => $this->visita->nom_visitante,
+
+        ]) */;
     }
 }

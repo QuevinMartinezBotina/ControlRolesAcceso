@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 
+
 use League\CommonMark\Block\Element\Document;
 
 class VisitaController extends Controller
@@ -75,13 +76,17 @@ class VisitaController extends Controller
             $emailJefeArea = $user->email;
         }
 
-        $correo = new  EmailAutorizacionesVisitas;
-        Mail::to($emailJefeArea)->send($correo);
+        echo $request->nom_visitante;
+
+        /*  $correo = new  EmailAutorizacionesVisitas;
+        Mail::to($emailJefeArea)->send($correo); */
+
+        Mail::to($emailJefeArea)->send(new EmailAutorizacionesVisitas($request));
 
 
-        echo "Mensaje enviado a: " . $emailJefeArea;
+        /* echo "Mensaje enviado a: " . $emailJefeArea;
 
-        exit;
+        exit; */
 
         $this->validate($request, [
             'nom_visitante' => 'required',

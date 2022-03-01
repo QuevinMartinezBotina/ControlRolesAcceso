@@ -10,45 +10,170 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
     <title>Autorización visitas</title>
+
+    <style>
+        .correo-visitas {
+            font-family: 'Rubik', sans-serif !important;
+        }
+
+    </style>
 </head>
 
-<body class="bg-dark text-white container d-flex justify-content-center">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-12 d-flex justify-content-center">
-            <h1 class="h1">Visita a instalaciones</h1>
+<body class="container-fluid d-flex justify-content-center correo-visitas">
+    {{-- <div class="row d-flex justify-content-center m-3  shadow-lg">
+        <div class="col-md-12 d-flex justify-content-center  shadow p-2 bg-success">
+            <p class="h2 text-center  text-white">
+                <strong>
+                    Nueva visita a instalaciones
+                </strong>
+            </p>
         </div>
         <div class="col-md-12 d-flex justify-content-center">
-            <i class="i"> Viista a las instalciones para reunion de negocios, enviaod por:
-                {{-- <strong>{{ $emailJefeArea }}</strong> </i>
-        </div> --}}
-                <div class="col-md-12 d-flex justify-content-center">
-                    <div class="row d-flex justify-content-center m-2">
+            <i class="i">
+                <strong>
+                    Visitante:
+                </strong>
+                {{ /* $request->nom_visitante */ ' Juan perez' }}
+            </i>
 
-                        <div class="col-5">
-                            <a class="btn btn-success" href="http://127.0.0.1:8000/aprobaciones">Autorizar Visica</a>
-                        </div>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+            <i class="i">
+                <strong>
+                    Motivo de la visita:
+                </strong>
+                {{ /* $request->nom_visitante */ ' Reunion de negocios' }}
+            </i>
 
-                        <div class="col-5">
-                            <a class="btn btn-danger" href="http://127.0.0.1:8000/aprobaciones">Denegar Visica</a>
-                        </div>
-                    </div>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+            <i class="i">
+                <strong>
+                    Empresa de la que visita:
+                </strong>
+                {{ /* $request->nom_visitante */ ' Amazon' }}
+            </i>
+
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+            <i class="i">
+                <strong>
+                    Motivo de la visita:
+                </strong>
+                {{ /* $request->nom_visitante */ ' Reunion de negocios' }}
+            </i>
+
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+            <i class="i">
+                <strong>
+                    Fecha programada:
+                </strong>
+                {{ /* $request->nom_visitante */ ' 22-03-2022' }}
+            </i>
+
+        </div>
+        <div class="col-md-12 d-flex justify-content-center">
+            <div class="row d-flex justify-content-center m-2">
+
+                <div class="col-5">
+                    <a class="btn btn-success" href="http://127.0.0.1:8000/aprobaciones">Autorizar Visica</a>
                 </div>
+
+                <div class="col-5">
+                    <a class="btn btn-danger" href="http://127.0.0.1:8000/aprobaciones">Denegar Visica</a>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="row d-flex justify-content-center m-3  shadow-lg rounded">
+        <div class="col-md-12 d-flex justify-content-center  p-2 bg-success avi-bg-green rounded-top">
+            <p class="h3 text-center  text-white">
+                <strong>
+                    Nueva visita a instalaciones
+                </strong>
+            </p>
         </div>
 
+        <div class="col-md-12 d-flex justify-content-center">
+            <div class="col-md-4 border d-flex justify-content-center  avi-target-orange  rounded p-3 m-2">
+                <div class="row">
+                    <div class="col-md-12 h3 d-flex justify-content-center">
+                        <strong class="text-center text-muted">
+                            {{ $request->nom_visitante }}
+                        </strong>
+                    </div>
+                    <div class="col-md-12 h5 d-flex justify-content-center">
+                        <i class="far fa-user avi-icon-xl"></i>
+                    </div>
 
-        <!-- Optional JavaScript; choose one of the two! -->
+                    <div class="col-md-12 h5 d-flex justify-content-center text-muted">
+                        Motivo de la visita
+                    </div>
+                    <div class="col-md-12 h6 d-flex justify-content-center  ">
+                        <strong>
+                            {{ $request->motivo_visita }}
+                        </strong>
+                    </div>
 
-        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-        </script>
+                    <div class="col-md-12 h5 d-flex justify-content-center text-muted">
+                        Empresa de la que visita
+                    </div>
+                    <div class="col-md-12 h6 d-flex justify-content-center ">
+                        <strong>
+                            {{ $request->nom_empresa }}
+                        </strong>
+                    </div>
 
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <!--
+                    <div class="col-md-12 h5 d-flex justify-content-center text-muted">
+                        Fecha programada
+                    </div>
+                    <div class="col-md-12 h6 d-flex justify-content-center ">
+                        <strong>
+                            {{ date('d-m-Y', strtotime($request->fecha_programada)) }}
+                        </strong>
+                    </div>
+
+
+                    <div class="col-md-12 h6 d-flex justify-content-center  my-2">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-6 col-md-6">
+                                <a href="http://127.0.0.1:8000/aprobaciones/" class="btn btn-danger "
+                                    type="submit">Denegar</a>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <a href="http://127.0.0.1:8000/aprobaciones/" class="btn btn-success "
+                                    type="submit">Aprobar</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
