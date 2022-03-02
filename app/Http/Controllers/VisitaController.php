@@ -61,33 +61,6 @@ class VisitaController extends Controller
     public function store(Request $request)
     {
 
-        /* *
-        *  Para traer el correo actual del area
-        * */
-
-        $users = DB::table('users')
-            ->join('areas', 'users.id', '=', 'areas.id_user')
-            ->select('users.email')
-            ->where('areas.id', '=', $request->id_area)
-            ->get();
-
-        foreach ($users as $user) {
-
-            $emailJefeArea = $user->email;
-        }
-
-        echo $request->nom_visitante;
-
-        /*  $correo = new  EmailAutorizacionesVisitas;
-        Mail::to($emailJefeArea)->send($correo); */
-
-        Mail::to($emailJefeArea)->send(new EmailAutorizacionesVisitas($request));
-
-
-        /* echo "Mensaje enviado a: " . $emailJefeArea;
-
-        exit; */
-
         $this->validate($request, [
             'nom_visitante' => 'required',
             'num_documento' => 'required',
@@ -107,8 +80,29 @@ class VisitaController extends Controller
             'id_sede' => 'required',
         ]);
 
-        Visita::create($request->all());
+        $visita = Visita::create($request->all());
 
+        /* *
+        *  Para traer el correo actual del area
+        * */
+
+        $users = DB::table('users')
+            ->join('areas', 'users.id', '=', 'areas.id_user')
+            ->select('users.email')
+            ->where('areas.id', '=', $request->id_area)
+            ->get();
+
+        foreach ($users as $user) {
+
+            $emailJefeArea = $user->email;
+        }
+
+        echo $request->nom_visitante;
+
+        Mail::to(
+            $emailJefeArea,
+            'asistemas.rcosta@avicolaelmadrono.com'
+        )->send(new EmailAutorizacionesVisitas($visita));
 
         return redirect()->route('visitas.create')->with('success', 'Visita creada con exito!');
     }
@@ -208,9 +202,6 @@ class VisitaController extends Controller
                 $id_EstadoArea = $estado->id;
             }
         }
-
-        /* echo  $id_EstadoArea;
-        exit; */
 
         $visita =  Visita::find($visita->id);
         $visita->id_estado = $id_EstadoArea;

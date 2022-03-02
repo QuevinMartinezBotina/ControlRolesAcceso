@@ -148,8 +148,9 @@
                                     type="submit">Denegar</a>
                             </div>
                             <div class="col-6 col-md-6">
-                                <a href="http://127.0.0.1:8000/aprobaciones/" class="btn btn-success "
-                                    type="submit">Aprobar</a>
+                                <a href="http://127.0.0.1:8000/visitas/{{ $request->id }}" class="btn btn-success "
+                                    type="submit">Aprobar
+                                </a>
                             </div>
                         </div>
 
