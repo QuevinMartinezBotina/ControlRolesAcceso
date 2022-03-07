@@ -143,13 +143,9 @@
 
                     <div class="col-md-12 h6 d-flex justify-content-center  my-2">
                         <div class="row d-flex justify-content-center">
-                            <div class="col-6 col-md-6">
-                                <a href="http://127.0.0.1:8000/aprobaciones/" class="btn btn-danger "
-                                    type="submit">Denegar</a>
-                            </div>
-                            <div class="col-6 col-md-6">
+                            <div class="col-12 col-md-12">
                                 <a href="http://127.0.0.1:8000/visitas/{{ $request->id }}" class="btn btn-success "
-                                    type="submit">Aprobar
+                                    type="submit">Ver detalles
                                 </a>
                             </div>
                         </div>

@@ -54,18 +54,11 @@ Route::group(['middleware' => ['auth']], function () {
     ?Espacio para ruta de aprobaciones
     */
     Route::get('/aprobaciones', [VisitaController::class, 'aprobaciones'])->name('aprobaciones');
-    Route::patch('/aprobaciones/{visita}/aprobar', [VisitaController::class, 'aprobar'])->name('aprobaciones.aprobar');
-    Route::patch('/aprobaciones/{visita}/denegar', [VisitaController::class, 'denegar'])->name('aprobaciones.denegar');
+    Route::patch('/aprobaciones/{visita}/aprobar', [VisitaController::class, 'aprobarVisita'])->name('aprobaciones.aprobar');
+    Route::patch('/aprobaciones/{visita}/denegar', [VisitaController::class, 'denegarVisita'])->name('aprobaciones.denegar');
+
     /*
-    ?Para envio de correos
+    !Para aprobaciones a pro medio de correos
     */
-    Route::get('/aprobaciones/emails', function () {
-
-        return view('emails.EmailVisitas');
-
-        /* $correo = new  EmailAutorizacionesVisitas;
-        Mail::to('santiiiago4@gmail.com')->send($correo);
-
-        return "Mensaje enviado"; */
-    });
+    Route::get('correos/{visita}', [VisitaController::class, 'showAprobaciones'])->name('aprobaciones.correo');
 });

@@ -115,8 +115,9 @@ class VisitaController extends Controller
      */
     public function show(Request $request, Visita $visita)
     {
+        $visitas = Visita::all();
 
-        return view('visitas.show', compact('visita'));
+        return view('visitas.show', compact('visita', 'visitas'));
     }
 
     /**
@@ -192,7 +193,10 @@ class VisitaController extends Controller
         return view('visitas.aprobations', compact('visitas'));
     }
 
-    public function aprobar(Request $request, Visita $visita)
+    /*
+        !Funciones base para aprobar y denegar visitas
+    */
+    public function Aprobar(Visita $visita/* , $view */)
     {
 
         $estados = Estado::all('id', 'nom_estado');
@@ -207,19 +211,49 @@ class VisitaController extends Controller
         $visita->id_estado = $id_EstadoArea;
 
         $visita->update();
-
-        /* Estado::create($request->all()); */
-
-        return redirect()->route('aprobaciones')->with('success', 'Visita aprobada con exito!');
     }
 
-    public function denegar(Request $request, Visita $visita)
+    public function Denegar(Visita $visita)
     {
         $visita = Visita::find($visita->id);
         $visita->id_estado = null;
 
         $visita->update();
+    }
 
+    /*
+    ?Funciones para funcionamiento de aprobaciones por la web
+    */
+
+    public function aprobarVisita(Visita $visita)
+    {
+
+        $this->Aprobar($visita);
+        return redirect()->route('aprobaciones')->with('success', 'Visita aprobada con exito!');
+    }
+
+    public function denegarVisita(Visita $visita)
+    {
+
+        $this->Denegar($visita);
         return redirect()->route('aprobaciones')->with('success', 'Visita denegada con exito!');
+    }
+
+    /*
+    ?Funciones para funcionamiento de aprobaciones por la correo
+    */
+
+    public function aprobarVisitaCorreo(Visita $visita)
+    {
+
+        $this->Aprobar($visita);
+        return redirect()->route('show')->with('success', 'Visita aprobada con exito!');
+    }
+
+    public function denegarVisitaCorreo(Visita $visita)
+    {
+
+        $this->Denegar($visita);
+        return redirect()->route('show')->with('success', 'Visita denegada con exito!');
     }
 }

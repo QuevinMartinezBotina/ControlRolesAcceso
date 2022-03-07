@@ -16,8 +16,20 @@
                         <div class="card-body shadow-lg">
 
                             <div class="row">
-                                <div
-                                    class="col-md-4 border-right d-flex justify-content-center  avi-target-green  rounded p-3 m-2">
+
+                                <div class="col-12">
+                                    @if ($message = Session::get('success'))
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-4 border-right d-flex   avi-target-green  rounded p-3 m-2">
                                     <div class="row">
                                         <div class="col-md-12 h3 d-flex justify-content-center">
                                             <strong class="text-center">
@@ -68,24 +80,60 @@
                                             </strong>
                                         </div>
                                         <div class="col-md-5 h6 m-1 p-1">
-                                            <i
-                                                class="fas fa-phone avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                            {{ $visita->telefono }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-phone avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                        Teléfono
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-12">
+                                                    {{ $visita->telefono }}
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-5 h6 m-1 p-1">
-                                            <i
-                                                class="fas fa-envelope avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                            {{ $visita->correo }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-envelope avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                        Correo
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-12">
+                                                    {{ $visita->correo }}
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-5 h6 m-1 p-1">
-                                            <i
-                                                class="fas fa-building avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                            {{ $visita->nom_empresa }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-building avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                        Empresa Visitante
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-12">
+                                                    {{ $visita->nom_empresa }}
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-5 h6 m-1 p-1">
-                                            <i
-                                                class="fas fa-medkit avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                            {{ $visita->arl_empresa }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-medkit avi-bg-red circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                        ARL
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-12">
+                                                    {{ $visita->arl_empresa }}
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {{-- Separador --}}
@@ -98,27 +146,64 @@
                                             </strong>
                                         </div>
                                         <div class="col-md-5 h6 m-1 p-1 ">
-                                            <i
-                                                class="fas fa-hotel avi-bg-green circle p-2 text-white rounded-circle avi-icon-info "></i>
-                                            {{ $visita->sede->nombre_sede }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-hotel avi-bg-green circle p-2 text-white rounded-circle avi-icon-info "></i>
+                                                        Sede de visita
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-12">
+                                                    {{ $visita->sede->nombre_sede }}
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-5 h6 m-1 p-1">
-                                            <i
-                                                class="fas fa-warehouse avi-bg-green circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                            {{ $visita->area->nom_area }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-warehouse avi-bg-green circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                        Area de visita
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-12">
+                                                    {{ $visita->area->nom_area }}
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-5 h6 m-1 p-1">
-                                            <i
-                                                class="fas fa-bell avi-bg-green circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                            {{ $visita->motivo_visita }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-bell avi-bg-green circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                        Motivo de visita
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-10">
+                                                    {{ $visita->motivo_visita }}
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-5 h6 m-1 p-1">
-                                            <i
-                                                class="fas fa-exclamation-circle avi-bg-green circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                            {{ $visita->observaciones }}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <strong>
+                                                        <i
+                                                            class="fas fa-exclamation-circle avi-bg-green circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                        Observaciones
+                                                    </strong>
+                                                </div>
+                                                <div class=" ml-5 p-1 col-10">
+                                                    {{ $visita->observaciones }}
+                                                </div>
+                                            </div>
+
                                         </div>
 
                                         @if (isset($visita->tipo))
@@ -133,28 +218,84 @@
                                                 </strong>
                                             </div>
                                             <div class="col-md-4 h6 m-1 p-1">
-                                                <i
-                                                    class="fas fa-hotel avi-bg-yellow circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                                {{ $visita->tipo }}
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <strong>
+                                                            <i
+                                                                class="fas fa-hotel avi-bg-yellow circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                            Tipo de vehículo
+                                                        </strong>
+                                                    </div>
+                                                    <div class=" ml-5 p-1 col-10">
+                                                        {{ $visita->tipo }}
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-4 h6 m-1 p-1">
-                                                <i
-                                                    class="fas fa-warehouse avi-bg-yellow circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                                {{ $visita->placa }}
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <strong>
+                                                            <i
+                                                                class="fas fa-warehouse avi-bg-yellow circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                            Placa del vehículo
+                                                        </strong>
+                                                    </div>
+                                                    <div class=" ml-5 p-1 col-10">
+                                                        {{ $visita->placa }}
+
+                                                    </div>
+                                                </div>
+
                                             </div>
 
                                             <div class="col-md-3 h6 m-1 p-1">
-                                                <i
-                                                    class="fas fa-bell avi-bg-yellow circle p-2 text-white rounded-circle avi-icon-info"></i>
-                                                {{ $visita->color }}
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <strong>
+                                                            <i
+                                                                class="fas fa-bell avi-bg-yellow circle p-2 text-white rounded-circle avi-icon-info"></i>
+                                                            Color
+                                                        </strong>
+                                                    </div>
+                                                    <div class=" ml-5 p-1 col-10">
+                                                        {{ $visita->color }}
+                                                    </div>
+                                                </div>
                                             </div>
                                         @endif
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <a class="btn btn-primary" href="{{ route('visitas.index') }}">Volver</a>
+                                <div class="col-md-12 d-flex justify-content-start">
+                                    <div class="row d-flex justify-content-start">
+                                        <div class="col-4">
+                                            <a class="btn btn-primary" href="{{ route('visitas.index') }}">Volver</a>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <form class=""
+                                                action="{{ route('aprobaciones.aprobar', $visita->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+
+                                                <button class="btn avi-boton-green text-white"
+                                                    type="submit">Aprobar</button>
+                                            </form>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <form action="{{ route('aprobaciones.denegar', $visita->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <div class="">
+                                                    <button class="btn avi-boton-red text-white "
+                                                        type="submit">Denegar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

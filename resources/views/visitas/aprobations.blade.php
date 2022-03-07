@@ -11,7 +11,18 @@
         </div>
         <div class="section-body ">
             <div class="row ">
-                <div class="col-lg-12">
+                <div class="col-12">
+
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ $message }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                </div>
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-body shadow-lg">
 
@@ -25,7 +36,7 @@
                                     </h3>
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="row col-md-12">
                                     @foreach ($visitas as $visita)
                                         @if ($visita->id_estado == null)
                                             <div
@@ -108,7 +119,7 @@
                                     </h3>
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="row col-md-12">
                                     @foreach ($visitas as $visita)
                                         @if ($visita->id_estado)
                                             <div
