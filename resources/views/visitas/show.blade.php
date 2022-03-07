@@ -269,32 +269,39 @@
 
                                 <div class="col-md-12 d-flex justify-content-start">
                                     <div class="row d-flex justify-content-start">
-                                        <div class="col-4">
-                                            <a class="btn btn-primary" href="{{ route('visitas.index') }}">Volver</a>
-                                        </div>
 
-                                        <div class="col-4">
-                                            <form class=""
-                                                action="{{ route('aprobaciones.aprobar', $visita->id) }}" method="POST">
-                                                @csrf
-                                                @method('PATCH')
+                                        @can('visita-volver')
+                                            <div class="col-4">
+                                                <a class="btn btn-primary" href="{{ route('visitas.index') }}">Volver</a>
+                                            </div>
+                                        @endcan
 
-                                                <button class="btn avi-boton-green text-white"
-                                                    type="submit">Aprobar</button>
-                                            </form>
-                                        </div>
+                                        @can('aprobacion-aprobar')
+                                            <div class="col-4">
+                                                <form class=""
+                                                    action="{{ route('aprobaciones.aprobar', $visita->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
 
-                                        <div class="col-4">
-                                            <form action="{{ route('aprobaciones.denegar', $visita->id) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('PATCH')
-                                                <div class="">
-                                                    <button class="btn avi-boton-red text-white "
-                                                        type="submit">Denegar</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                                    <button class="btn avi-boton-green text-white"
+                                                        type="submit">Aprobar</button>
+                                                </form>
+                                            </div>
+                                        @endcan
+
+                                        @can('aprobacion-denegar')
+                                            <div class="col-4">
+                                                <form action="{{ route('aprobaciones.denegar', $visita->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="">
+                                                        <button class="btn avi-boton-red text-white "
+                                                            type="submit">Denegar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>

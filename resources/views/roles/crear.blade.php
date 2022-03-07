@@ -93,6 +93,33 @@
                                                         @endif
                                                     @endforeach
                                                 </div>
+
+
+                                                {{-- correos --}}
+                                                {{-- <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permisos de modulo visitas</strong>
+                                                    </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 6) == 'visita')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div> --}}
+
+                                                {{-- correos --}}
+                                                <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permiso de modulo aprobaciones</strong>
+                                                    </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 10) == 'aprobacion' || substr($value->name, 0, 6) == 'visita')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

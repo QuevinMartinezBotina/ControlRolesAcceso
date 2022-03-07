@@ -21,10 +21,19 @@ class VisitaController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:ver-visita|crear-visita|editar-visita|borrar-visita', ['only' => ['index']]);
+        $this->middleware('permission:ver-visita|crear-visita|editar-visita|borrar-visita|aprobacion-aprobar|aprobacion-denegar|visita-volver|ver-aprobacion', ['only' => ['index']]);
         $this->middleware('permission:crear-visita', ['only' => ['create', 'store']]);
         $this->middleware('permission:editar-visita', ['only' => ['edit', 'update']]);
         $this->middleware('permission:borrar-visita', ['only' => ['destroy']]);
+        /*
+          * Para los permisos de las accciones de las aprobaciones
+        */
+        $this->middleware('permission:aprobacion-aprobar', ['only' => ['aprobarVisita']]);
+        $this->middleware('permission:aprobacion-denegar', ['only' => ['denegarVisita']]);
+        $this->middleware('permission:ver-aprobacion', ['only' => ['aprobaciones']]);
+        $this->middleware('permission:aprobacion-aprobados', ['only' => ['aprobaciones']]);
+        $this->middleware('permission:aprobacion-desaprobados', ['only' => ['aprobaciones']]);
+        $this->middleware('permission:aprobacion-por-aprobar', ['only' => ['aprobaciones']]);
     }
 
     /**
@@ -237,23 +246,5 @@ class VisitaController extends Controller
 
         $this->Denegar($visita);
         return redirect()->route('aprobaciones')->with('success', 'Visita denegada con exito!');
-    }
-
-    /*
-    ?Funciones para funcionamiento de aprobaciones por la correo
-    */
-
-    public function aprobarVisitaCorreo(Visita $visita)
-    {
-
-        $this->Aprobar($visita);
-        return redirect()->route('show')->with('success', 'Visita aprobada con exito!');
-    }
-
-    public function denegarVisitaCorreo(Visita $visita)
-    {
-
-        $this->Denegar($visita);
-        return redirect()->route('show')->with('success', 'Visita denegada con exito!');
     }
 }

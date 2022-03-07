@@ -85,7 +85,30 @@
                                                         @endif
                                                     @endforeach
                                                 </div>
+                                                {{-- correos --}}
+                                                <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permisos de visitas</strong> </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 6) == 'visita')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                {{-- correos --}}
+                                                <div class="col-md-3  border p-4 m-1">
+                                                    <h3 class="h6"> <strong>Permisos de aprobaciones</strong> </h3>
+                                                    @foreach ($permission as $value)
+                                                        @if (substr($value->name, 0, 10) == 'aprobacion')
+                                                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, ['class' => 'name']) }}
+                                                                {{ $value->name }}</label>
+                                                            <br />
+                                                        @endif
+                                                    @endforeach
+                                                </div>
                                             </div>
+
                                             {{-- @foreach ($permission as $value)
                                                 <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, ['class' => 'name']) }}
                                                     {{ $value->name }}</label>
