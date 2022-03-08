@@ -18,12 +18,13 @@ class SeederPermisosAprobaciones extends Seeder
         $permisos = [
             //Tabla aprobaciones
 
+            'ver-aprobacion',
+            'aprobacion-volver',
             'aprobacion-aprobar',
             'aprobacion-denegar',
-            'ver-aprobacion',
-            'aprobacion-aprobados',
-            'aprobacion-desaprobador',
-            'aprobacion-por-aprobar',
+            'aprobacion-ver-aprobados',
+            'aprobacion-ver-desaprobados ',
+            'aprobacion-ver-por-aprobar',
 
 
         ];

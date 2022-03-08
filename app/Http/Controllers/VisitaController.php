@@ -21,19 +21,19 @@ class VisitaController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:ver-visita|crear-visita|editar-visita|borrar-visita|aprobacion-aprobar|aprobacion-denegar|visita-volver|ver-aprobacion', ['only' => ['index']]);
+        $this->middleware('permission:ver-visita|crear-visita|editar-visita|borrar-visita|aprobacion-aprobar|aprobacion-denegar|visita-volver', ['only' => ['index']]);
         $this->middleware('permission:crear-visita', ['only' => ['create', 'store']]);
         $this->middleware('permission:editar-visita', ['only' => ['edit', 'update']]);
         $this->middleware('permission:borrar-visita', ['only' => ['destroy']]);
         /*
           * Para los permisos de las accciones de las aprobaciones
         */
+        $this->middleware('permission:ver-aprobacion|aprobacion-ver-aprobados|aprobacion-ver-por-aprobar|aprobacion-ver-desaprobados|aprobacion-volver', ['only' => ['aprobaciones']]);
+        /* $this->middleware('permission:', ['only' => ['aprobaciones']]);
+        $this->middleware('permission:', ['only' => ['aprobaciones']]); */
         $this->middleware('permission:aprobacion-aprobar', ['only' => ['aprobarVisita']]);
         $this->middleware('permission:aprobacion-denegar', ['only' => ['denegarVisita']]);
-        $this->middleware('permission:ver-aprobacion', ['only' => ['aprobaciones']]);
-        $this->middleware('permission:aprobacion-aprobados', ['only' => ['aprobaciones']]);
-        $this->middleware('permission:aprobacion-desaprobados', ['only' => ['aprobaciones']]);
-        $this->middleware('permission:aprobacion-por-aprobar', ['only' => ['aprobaciones']]);
+        /* $this->middleware('permission:', ['only' => ['aprobaciones']]); */
     }
 
     /**
@@ -198,8 +198,9 @@ class VisitaController extends Controller
     public function aprobaciones()
     {
         $visitas = Visita::all();
+        $estados = Estado::all();
 
-        return view('visitas.aprobations', compact('visitas'));
+        return view('visitas.aprobations', compact('visitas', 'estados'));
     }
 
     /*
@@ -224,8 +225,16 @@ class VisitaController extends Controller
 
     public function Denegar(Visita $visita)
     {
+        $estados = Estado::all('id', 'nom_estado');
+
+        foreach ($estados as $estado) {
+            if ($estado->nom_estado == 'Visita Desaprobada') {
+                $id_EstadoArea = $estado->id;
+            }
+        }
+
         $visita = Visita::find($visita->id);
-        $visita->id_estado = null;
+        $visita->id_estado = $id_EstadoArea;
 
         $visita->update();
     }

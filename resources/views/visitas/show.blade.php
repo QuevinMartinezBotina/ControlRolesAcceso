@@ -270,14 +270,14 @@
                                 <div class="col-md-12 d-flex justify-content-start">
                                     <div class="row d-flex justify-content-start">
 
-                                        @can('visita-volver')
-                                            <div class="col-4">
+                                        @can('aprobacion-volver')
+                                            <div class="col-3 m-1">
                                                 <a class="btn btn-primary" href="{{ route('visitas.index') }}">Volver</a>
                                             </div>
                                         @endcan
 
                                         @can('aprobacion-aprobar')
-                                            <div class="col-4">
+                                            <div class="col-3 m-1">
                                                 <form class=""
                                                     action="{{ route('aprobaciones.aprobar', $visita->id) }}" method="POST">
                                                     @csrf
@@ -290,7 +290,7 @@
                                         @endcan
 
                                         @can('aprobacion-denegar')
-                                            <div class="col-4">
+                                            <div class="col-3 m-1">
                                                 <form action="{{ route('aprobaciones.denegar', $visita->id) }}"
                                                     method="POST">
                                                     @csrf
