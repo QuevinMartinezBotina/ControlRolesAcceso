@@ -80,21 +80,47 @@ class VisitaController extends Controller
             'fecha_programada' => 'required',
             /* 'fecha_visita' => 'required', */
             /* 'placa' => 'required',
-            'color' => 'required',
-            'tipo' => 'required', */
+                    'color' => 'required',
+                    'tipo' => 'required', */
             'id_documento' => 'required',
             'id_area' => 'required',
             'id_sede' => 'required',
         ]);
 
-        ucwords($request->nom_visitante);
-        ucwords($request->nom_empresa);
-        ucwords($request->arl_empresa);
-        ucfirst($request->tipo);
-        ucfirst($request->color);
-        strtoupper($request->placa);
+        $estados = Estado::all('id', 'nom_estado');
 
-        $visita = Visita::create($request->all());
+        foreach ($estados as $estado) {
+            if ($estado->nom_estado == 'Visita Por Aprobar') {
+                $id_EstadoArea = $estado->id;
+            }
+        }
+
+        /* var_dump($id_EstadoArea);
+        exit; */
+        $visita = new Visita();
+
+        $visita->nom_visitante = ucwords($request->nom_visitante);
+        $visita->id_documento = $request->id_documento;
+        $visita->num_documento = $request->num_documento;
+        $visita->telefono = $request->telefono;
+        $visita->correo = $request->correo;
+        $visita->nom_empresa = ucwords($request->nom_empresa);
+        $visita->arl_empresa = ucwords($request->arl_empresa);
+        $visita->id_area = $request->id_area;
+        $visita->motivo_visita = $request->motivo_visita;
+        $visita->observaciones = $request->observaciones;
+        $visita->id_sede = $request->id_sede;
+        $visita->fecha_programada = $request->fecha_programada;
+        $visita->fecha_visita = $request->fecha_visita;
+        $visita->tipo = $request->tipo;
+        //$visita->tipo = ucfirst($request->tipo);
+        $visita->placa = strtoupper($request->placa);
+        $visita->color = $request->color;
+        //$visita->color = $request->ucfirst($request->color);
+
+        $visita->id_estado = $id_EstadoArea;
+
+        $visita->save();
 
         /* *
         *  Para traer el correo actual del area

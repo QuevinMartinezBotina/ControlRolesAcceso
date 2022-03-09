@@ -39,9 +39,9 @@
 
                                     <div class="row col-md-12">
                                         @foreach ($visitas as $visita)
-                                            @if ($visita->id_estado == null)
+                                            @if ($visita->estado->nom_estado == 'Visita Por Aprobar')
                                                 <div
-                                                    class="col-md-3 border-right d-flex justify-content-center  avi-target-red  rounded p-3 m-2">
+                                                    class="col-md-3 border-right d-flex justify-content-center  avi-target-orange  rounded p-3 m-2">
                                                     <div class="row">
                                                         <div class="col-md-12 h3 d-flex justify-content-center">
                                                             <strong class="text-center">
@@ -187,18 +187,20 @@
                                                             </div>
                                                         @endif
 
-                                                        <div class="col-md-12 h6 d-flex justify-content-center avi-text-green">
-                                                            <form action="{{ route('aprobaciones.denegar', $visita->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('PATCH')
-                                                                <div class="">
-                                                                    <button class="btn avi-boton-red text-white "
-                                                                        type="submit">Denegar</button>
+                                                        @can('aprobacion-denegar')
+                                                            <div class="col-md-12 h6 d-flex justify-content-center avi-text-green">
+                                                                <form action="{{ route('aprobaciones.denegar', $visita->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('PATCH')
+                                                                    <div class="">
+                                                                        <button class="btn avi-boton-red text-white "
+                                                                            type="submit">Denegar</button>
 
-                                                                </div>
-                                                            </form>
-                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        @endcan
 
 
                                                     </div>
@@ -224,7 +226,7 @@
                                         @foreach ($visitas as $visita)
                                             @if ($visita->estado->nom_estado == 'Visita Desaprobada')
                                                 <div
-                                                    class="col-md-3 border-right d-flex justify-content-center  avi-target-green  rounded p-3 m-2">
+                                                    class="col-md-3 border-right d-flex justify-content-center  avi-target-red  rounded p-3 m-2">
                                                     <div class="row">
                                                         <div class="col-md-12 h3 d-flex justify-content-center">
                                                             <strong class="text-center">
