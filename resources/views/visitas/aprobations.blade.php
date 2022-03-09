@@ -92,12 +92,20 @@
 
                                                                 @can('aprobacion-denegar')
                                                                     <div class="col-md-6">
-                                                                        <button class="btn avi-boton-red text-white"
-                                                                            type="submit">Denegar</button>
+                                                                        <form
+                                                                            action="{{ route('aprobaciones.denegar', $visita->id) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('PATCH')
+                                                                            <div class="">
+                                                                                <button class="btn avi-boton-red text-white "
+                                                                                    type="submit">Denegar</button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 @endcan
 
-                                                                @can('aprobacion-denegar')
+                                                                @can('aprobacion-aprobar')
                                                                     <form class="col-md-6"
                                                                         action="{{ route('aprobaciones.aprobar', $visita->id) }}"
                                                                         method="POST">

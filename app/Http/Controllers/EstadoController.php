@@ -95,13 +95,6 @@ class EstadoController extends Controller
      */
     public function update(Request $request, Estado $estado)
     {
-        /* request()->validate([
-            'nom_estado' => 'required',
-            'color' => 'required',
-        ]);
-
-        $estado->update($request->all()); */
-
         request()->validate([
             'nom_estado' => 'required',
             'color' => 'required',

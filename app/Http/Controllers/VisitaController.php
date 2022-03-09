@@ -28,12 +28,10 @@ class VisitaController extends Controller
         /*
           * Para los permisos de las accciones de las aprobaciones
         */
-        $this->middleware('permission:ver-aprobacion|aprobacion-ver-aprobados|aprobacion-ver-por-aprobar|aprobacion-ver-desaprobados|aprobacion-volver', ['only' => ['aprobaciones']]);
-        /* $this->middleware('permission:', ['only' => ['aprobaciones']]);
-        $this->middleware('permission:', ['only' => ['aprobaciones']]); */
+        $this->middleware('permission:aprobacion-ver-desaprobados|ver-aprobacion|aprobacion-ver-aprobados|aprobacion-ver-por-aprobar|aprobacion-volver', ['only' => ['aprobaciones']]);
+
         $this->middleware('permission:aprobacion-aprobar', ['only' => ['aprobarVisita']]);
         $this->middleware('permission:aprobacion-denegar', ['only' => ['denegarVisita']]);
-        /* $this->middleware('permission:', ['only' => ['aprobaciones']]); */
     }
 
     /**
@@ -88,6 +86,13 @@ class VisitaController extends Controller
             'id_area' => 'required',
             'id_sede' => 'required',
         ]);
+
+        ucwords($request->nom_visitante);
+        ucwords($request->nom_empresa);
+        ucwords($request->arl_empresa);
+        ucfirst($request->tipo);
+        ucfirst($request->color);
+        strtoupper($request->placa);
 
         $visita = Visita::create($request->all());
 
@@ -171,6 +176,7 @@ class VisitaController extends Controller
             'id_sede' => 'required',
         ]);
 
+        $visita->nom_visitante = strtolower($request->nom_visitante);
         $visita->update($request->all());
 
         return redirect()->route('visitas.index')->with('success', 'Actualizado con exito!');

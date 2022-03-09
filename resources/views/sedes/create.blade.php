@@ -43,19 +43,22 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="nombre_sede">Nombre de la sede</label>
-                                                <input type="text" name="nombre_sede" class="form-control">
+                                                <input type="text" name="nombre_sede" class="form-control"
+                                                    value="{{ old('nombre_sede') }}">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="ciudad">Ciudad</label>
-                                                <input type="text" name="ciudad" class="form-control">
+                                                <input type="text" name="ciudad" class="form-control"
+                                                    value="{{ old('ciudad') }}">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="departamento">Departamento</label>
-                                                <input type="text" name="departamento" class="form-control">
+                                                <input type="text" name="departamento" class="form-control"
+                                                    value="{{ old('departamento') }}">
                                             </div>
                                         </div>
 

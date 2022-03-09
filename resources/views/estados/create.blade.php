@@ -39,7 +39,8 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="nom_estado">Nombre del Estado</label>
-                                                <input type="text" name="nom_estado" class="form-control">
+                                                <input type="text" name="nom_estado" class="form-control"
+                                                    value="{{ old('nom_estado') }}">
                                             </div>
                                         </div>
 
@@ -47,14 +48,16 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="modulo">Modulo al que pertenece el estado</label>
-                                                <input type="text" name="modulo" class="form-control">
+                                                <input type="text" name="modulo" class="form-control"
+                                                    value="{{ old('modulo') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-2 w-50">
                                             <div class="form-group">
                                                 <label for="color">Color del Estado</label>
-                                                <input type="color" name="color" class="form-control">
+                                                <input type="color" name="color" class="form-control"
+                                                    value="{{ old('color') }}">
                                             </div>
                                         </div>
 

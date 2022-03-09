@@ -12,14 +12,12 @@
                         <div class="card-body">
 
                             @if ($message = Session::get('success'))
-
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>{{ $message }}</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-
                             @endif
 
                             @if ($errors->any())
@@ -41,7 +39,8 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="tipo">Tipo de documento</label>
-                                                <input type="text" name="tipo" class="form-control">
+                                                <input type="text" name="tipo" class="form-control"
+                                                    value="{{ old('tipo') }}">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">

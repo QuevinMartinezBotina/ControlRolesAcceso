@@ -75,7 +75,7 @@
                                             <label for="id_cargo">Cargos</label>
                                             <select name="id_cargo" class="form-select form-control">
                                                 @foreach ($cargos as $cargo)
-                                                    <option class="bg-success" value="{{ $cargo->id }}">
+                                                    <option class="" value="{{ $cargo->id }}">
                                                         {{ $cargo->nom_cargo }}</option>
                                                 @endforeach
                                             </select>

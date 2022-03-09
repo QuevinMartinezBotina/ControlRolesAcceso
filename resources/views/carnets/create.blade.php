@@ -43,14 +43,16 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="numero">Número de Carnet</label>
-                                                <input type="number" name="numero" class="form-control">
+                                                <input type="number" name="numero" class="form-control"
+                                                    value="{{ old('numero') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-2 ">
                                             <div class="form-group">
                                                 <label for="id_estado">Estado del Carnet</label>
-                                                <select class="form-control" name="id_estado">
+                                                <select class="form-control" name="id_estado"
+                                                    value="{{ old('id_estado') }}">
                                                     @foreach ($estados as $estado)
                                                         @if ($estado->modulo == 'carnets')
                                                             <option style="background: ; " value="{{ $estado->id }}">

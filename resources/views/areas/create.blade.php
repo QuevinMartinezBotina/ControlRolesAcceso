@@ -43,13 +43,15 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="nom_area">Nombre del Area</label>
-                                                <input type="text" name="nom_area" class="form-control">
+                                                <input type="text" name="nom_area" class="form-control"
+                                                    value="{{ old('nom_area') }}">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="id_user">Jefe del Area</label>
-                                                <select name="id_user" class="form-select form-control">
+                                                <select name="id_user" class="form-select form-control"
+                                                    value="{{ old('id_user') }}">
                                                     @foreach ($users as $user)
                                                         <option class="bg-success" value="{{ $user->id }}">
                                                             {{ $user->name }}</option>

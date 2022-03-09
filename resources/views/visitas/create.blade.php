@@ -44,14 +44,16 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="nom_visitante">Nombre del Visitante</label>
-                                                <input type="text" name="nom_visitante" class="form-control">
+                                                <input type="text" name="nom_visitante" class="form-control"
+                                                    value="{{ old('nom_visitante') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="id_documento">Tipo de Documento</label>
-                                                <select name="id_documento" class="form-select form-control">
+                                                <select name="id_documento" class="form-select form-control"
+                                                    value="{{ old('id_documento') }}">
                                                     @foreach ($documentos as $documento)
                                                         <option class="" value="{{ $documento->id }}">
                                                             {{ $documento->tipo }}
@@ -64,35 +66,40 @@
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="num_documento">Número de Documento</label>
-                                                <input type="number" name="num_documento" class="form-control">
+                                                <input type="number" name="num_documento" class="form-control"
+                                                    value="{{ old('num_documento') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="telefono">Teléfono</label>
-                                                <input type="number" name="telefono" class="form-control">
+                                                <input type="number" name="telefono" class="form-control"
+                                                    value="{{ old('telefono') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="correo">Correo</label>
-                                                <input type="email" name="correo" class="form-control">
+                                                <input type="email" name="correo" class="form-control"
+                                                    value="{{ old('correo') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="nom_empresa">Nombre Empresa</label>
-                                                <input type="text" name="nom_empresa" class="form-control">
+                                                <input type="text" name="nom_empresa" class="form-control"
+                                                    value="{{ old('nom_empresa') }}">
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="arl_empresa">ARL Empresa</label>
-                                                <input type="text" name="arl_empresa" class="form-control">
+                                                <input type="text" name="arl_empresa" class="form-control"
+                                                    value="{{ old('arl_empresa') }}">
 
                                             </div>
                                         </div>
@@ -100,7 +107,8 @@
                                         <div class="col-xs-3 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="id_area">Area de Visita</label>
-                                                <select name="id_area" class="form-select form-control">
+                                                <select name="id_area" class="form-select form-control"
+                                                    value="{{ old('id_area') }}">
                                                     @foreach ($areas as $area)
                                                         <option class="" value="{{ $area->id }}">
                                                             {{ $area->nom_area }}
@@ -113,21 +121,24 @@
                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                             <div class="form-group">
                                                 <label for="motivo_visita">Motivo de Visita</label>
-                                                <textarea class="w-100" name="motivo_visita" id="" rows="5"></textarea>
+                                                <textarea class="w-100" name="motivo_visita" id=""
+                                                    rows="5">{{ old('motivo_visita') }}</textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                             <div class="form-group">
                                                 <label for="observaciones">Observaciones</label>
-                                                <textarea class="w-100" name="observaciones" id="" rows="5"></textarea>
+                                                <textarea class="w-100" name="observaciones" id=""
+                                                    rows="5">{{ old('observaciones') }}</textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="id_sede">Sede a la que visita</label>
-                                                <select name="id_sede" class="form-select form-control">
+                                                <select name="id_sede" class="form-select form-control"
+                                                    value="{{ old('id_sede') }}">
                                                     @foreach ($sedes as $sede)
                                                         <option class="" value="{{ $sede->id }}">
                                                             {{ $sede->nombre_sede }}
@@ -140,7 +151,8 @@
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="fecha_programada">Fecha para la que se programa la visita</label>
-                                                <input type="date" name="fecha_programada" class="form-control">
+                                                <input type="date" name="fecha_programada" class="form-control"
+                                                    value="{{ old('fecha_programada') }}">
 
                                             </div>
                                         </div>
@@ -166,7 +178,8 @@
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="tipo">Tipo</label>
-                                                <input type="text" name="tipo" class="form-control">
+                                                <input type="text" name="tipo" class="form-control"
+                                                    value="{{ old('tipo') }}">
 
                                             </div>
                                         </div>
@@ -174,7 +187,8 @@
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="placa">Placa del Vehículo</label>
-                                                <input type="text" name="placa" class="form-control">
+                                                <input type="text" name="placa" class="form-control"
+                                                    value="{{ old('placa') }}">
 
                                             </div>
                                         </div>
@@ -182,7 +196,8 @@
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
                                                 <label for="color">Color</label>
-                                                <input type="text" name="color" class="form-control">
+                                                <input type="text" name="color" class="form-control"
+                                                    value="{{ old('color') }}">
 
                                             </div>
                                         </div>

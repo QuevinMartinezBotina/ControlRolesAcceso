@@ -23,7 +23,7 @@ class SeederPermisosAprobaciones extends Seeder
             'aprobacion-aprobar',
             'aprobacion-denegar',
             'aprobacion-ver-aprobados',
-            'aprobacion-ver-desaprobados ',
+            'aprobacion-ver-desaprobados',
             'aprobacion-ver-por-aprobar',
 
 

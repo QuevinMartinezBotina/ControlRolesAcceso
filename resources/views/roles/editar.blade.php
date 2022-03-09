@@ -86,7 +86,7 @@
                                                     @endforeach
                                                 </div>
                                                 {{-- correos --}}
-                                                <div class="col-md-3  border p-4 m-1">
+                                                <div class="col-md-4  border p-4 m-1">
                                                     <h3 class="h6"> <strong>Permisos de aprobaciones</strong> </h3>
                                                     @foreach ($permission as $value)
                                                         @if (substr($value->name, 0, 10) == 'aprobacion')

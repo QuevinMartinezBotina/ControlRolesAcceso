@@ -43,7 +43,8 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="nom_cargo">Nombre del Cargo</label>
-                                                <input type="text" name="nom_cargo" class="form-control">
+                                                <input type="text" name="nom_cargo" class="form-control"
+                                                    value="{{ old('nom_cargo') }}">
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
