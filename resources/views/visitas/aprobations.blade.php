@@ -269,18 +269,33 @@
                                                             </div>
                                                         @endif
 
-                                                        <div class="col-md-12 h6 d-flex justify-content-center avi-text-green">
-                                                            <form action="{{ route('aprobaciones.denegar', $visita->id) }}"
+                                                        @can('borrar-visita')
+                                                            <div class="col-6  avi-text-green">
+
+                                                                <form class="formEliminar"
+                                                                    action="{{ route('visitas.destroy', $visita->id) }}"
+                                                                    method="post">
+                                                                    @method('DELETE')
+                                                                    @csrf
+                                                                    {{-- Boton eliminar --}}
+                                                                    <button class="btn btn-danger text-white"
+                                                                        type="submit">Borrar</button>
+                                                                </form>
+
+                                                            </div>
+                                                        @endcan
+
+                                                        @can('aprobacion-aprobar')
+                                                            <form class="col-6"
+                                                                action="{{ route('aprobaciones.aprobar', $visita->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('PATCH')
-                                                                <div class="">
-                                                                    <button class="btn avi-boton-red text-white "
-                                                                        type="submit">Denegar</button>
 
-                                                                </div>
+                                                                <button class="btn avi-boton-green text-white"
+                                                                    type="submit">Aprobar</button>
                                                             </form>
-                                                        </div>
+                                                        @endcan
 
                                                     </div>
                                                 </div>
