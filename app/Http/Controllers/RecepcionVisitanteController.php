@@ -26,7 +26,9 @@ class RecepcionVisitanteController extends Controller
      */
     public function index()
     {
-        //
+        $visitas = Visita::all();
+
+        return view('recepcion-visitas.index', compact('visitas'));
     }
 
     /**
@@ -36,7 +38,6 @@ class RecepcionVisitanteController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -69,7 +70,12 @@ class RecepcionVisitanteController extends Controller
      */
     public function edit(RecepcionVisitante $recepcionVisitante)
     {
-        //
+        /* $visita = $recepcionVisitante; */
+
+        echo $recepcionVisitante;
+        exit;
+
+        return view('recepcion-visitas.edit', compact('recepcionVisitante'));
     }
 
     /**

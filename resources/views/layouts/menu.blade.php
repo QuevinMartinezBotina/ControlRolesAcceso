@@ -97,3 +97,11 @@
         </a>
     </li>
 @endcan
+
+@can('ver-recepcion-visita')
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('recepcion-visitas.index') }}">
+            <i class=" fas fa-concierge-bell"></i><span>Recepción Visitas</span>
+        </a>
+    </li>
+@endcan

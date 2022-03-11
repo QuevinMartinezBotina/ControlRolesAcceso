@@ -11,12 +11,12 @@ use App\Http\Controllers\CargoController;
 use App\Http\Controllers\CarnetController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\RecepcionVisitanteController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\VisitaController;
 use App\Mail\EmailAutorizacionesVisitas;
 use App\Mail\ReportesAutorizacionesVisitas;
 use Illuminate\Support\Facades\Mail;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('areas', AreaController::class);
     Route::resource('cargos', CargoController::class);
     Route::resource('visitas', VisitaController::class);
+    Route::resource('recepcion-visitas', RecepcionVisitanteController::class);
     /*
     ?Espacio para ruta de aprobaciones
     */
