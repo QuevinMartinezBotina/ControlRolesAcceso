@@ -70,8 +70,6 @@ class RecepcionVisitanteController extends Controller
      */
     public function edit(RecepcionVisitante $recepcionVisitante)
     {
-        /* $visita = $recepcionVisitante; */
-
         echo $recepcionVisitante;
         exit;
 

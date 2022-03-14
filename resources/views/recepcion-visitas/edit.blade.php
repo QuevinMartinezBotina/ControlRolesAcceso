@@ -31,7 +31,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <label for="nom_visitante">Nombre del Visitante
-                                                    {{ $recepcionVisitante->nom_visitante }}</label>
+                                                    {{ $recepcionVisitante->id }}</label>
                                                 <input value="{{ $recepcionVisitante->nom_visitante }}" type="text"
                                                     name="nom_visitante" class="form-control">
                                             </div>

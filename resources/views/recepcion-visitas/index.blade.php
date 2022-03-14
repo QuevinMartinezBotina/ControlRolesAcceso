@@ -67,24 +67,17 @@
 
                                                         <div class="col-md-12 col-12">
 
-                                                            <form class="formEliminar" action="{{-- {{ route('visitas.destroy', $visita->id) }} --}}"
-                                                                method="post">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                {{-- Botones de editar --}}
-                                                                @can('editar-recepcion-visita')
-                                                                    <a class="btn btn-primary"
-                                                                        href="{{ route('recepcion-visitas.edit', ['recepcion_visita' => $visita->id]) }}">Editar
-                                                                    </a>
-                                                                @endcan
+                                                            @can('editar-recepcion-visita')
+                                                                <a class="btn btn-primary"
+                                                                    href="{{ route('recepcion-visitas.edit', ['recepcion_visita' => $visita->id]) }}">Editar
+                                                                </a>
+                                                            @endcan
 
-                                                                @can('ver-recepcion-visita')
-                                                                    <a class="btn btn-warning"
-                                                                        href="{{ route('recepcion-visitas.show', $visita) }}">Detalles
-                                                                    </a>
-                                                                @endcan
-
-                                                            </form>
+                                                            @can('ver-recepcion-visita')
+                                                                <a class=" btn btn-warning"
+                                                                    href="{{ route('recepcion-visitas.show', $visita) }}">Detalles
+                                                                </a>
+                                                            @endcan
 
                                                         </div>
                                                     </div>

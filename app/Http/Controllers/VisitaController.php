@@ -168,6 +168,7 @@ class VisitaController extends Controller
      */
     public function edit(Visita $visita)
     {
+
         $documentos = Documento::all();
         $areas = Area::all();
         $sedes = Sede::all();
