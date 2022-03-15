@@ -69,15 +69,15 @@
 
                                                             @can('editar-recepcion-visita')
                                                                 <a class="btn btn-primary"
-                                                                    href="{{ route('recepcion-visitas.edit', ['recepcion_visita' => $visita->id]) }}">Editar
+                                                                    href="{{ route('recepcion-visitas.create', ['recepcion_visita' => $visita->id]) }}">Entrada
                                                                 </a>
                                                             @endcan
 
-                                                            @can('ver-recepcion-visita')
+                                                            {{-- @can('ver-recepcion-visita')
                                                                 <a class=" btn btn-warning"
                                                                     href="{{ route('recepcion-visitas.show', $visita) }}">Detalles
                                                                 </a>
-                                                            @endcan
+                                                            @endcan --}}
 
                                                         </div>
                                                     </div>

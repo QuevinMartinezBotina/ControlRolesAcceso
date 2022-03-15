@@ -36,8 +36,11 @@ class RecepcionVisitanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(/* $recepcionVisitante */)
     {
+        /* $visita = Visita::find($recepcionVisitante);
+        dd($visita);
+        return view('recepcion-visitas.crear', ) */
     }
 
     /**
@@ -68,10 +71,13 @@ class RecepcionVisitanteController extends Controller
      * @param  \App\Models\RecepcionVisitante  $recepcionVisitante
      * @return \Illuminate\Http\Response
      */
-    public function edit(RecepcionVisitante $recepcionVisitante)
+    public function edit($recepcionVisitante)
     {
-        echo $recepcionVisitante;
-        exit;
+        /* echo $recepcionVisitante;
+        exit; */
+        $visita = Visita::find($recepcionVisitante);
+        dd($visita);
+
 
         return view('recepcion-visitas.edit', compact('recepcionVisitante'));
     }
