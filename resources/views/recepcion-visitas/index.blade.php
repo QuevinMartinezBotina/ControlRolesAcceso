@@ -69,7 +69,7 @@
 
                                                             @can('editar-recepcion-visita')
                                                                 <a class="btn btn-primary"
-                                                                    href="{{ route('recepcion-visitas.create', ['recepcion_visita' => $visita->id]) }}">Entrada
+                                                                    href="{{ route('recepcion-visitas.createRecepcion', ['recepcion_visita' => $visita->id]) }}">Entrada
                                                                 </a>
                                                             @endcan
 

@@ -6,7 +6,10 @@ use App\Models\Carnet;
 use App\Models\Estado;
 use App\Models\RecepcionVisitante;
 use App\Models\Visita;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
+
 
 class RecepcionVisitanteController extends Controller
 {
@@ -28,6 +31,7 @@ class RecepcionVisitanteController extends Controller
     {
         $visitas = Visita::all();
 
+
         return view('recepcion-visitas.index', compact('visitas'));
     }
 
@@ -36,11 +40,18 @@ class RecepcionVisitanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(/* $recepcionVisitante */)
+    public function create()
     {
-        /* $visita = Visita::find($recepcionVisitante);
-        dd($visita);
-        return view('recepcion-visitas.crear', ) */
+    }
+
+    public function createRecepcionVisita($recepcionVisitante)
+    {
+        $visita = Visita::find($recepcionVisitante);
+        $carnets = Carnet::all();
+        $estados = Estado::all();
+
+        /* dd($visita); */
+        return view('recepcion-visitas.crear', compact('visita', 'carnets', 'estados'));
     }
 
     /**
@@ -51,7 +62,41 @@ class RecepcionVisitanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        request()->validate([
+            'observaciones' => '',
+            'fecha_entrada' => '',
+            'fecha_salida' => '',
+            'observaciones_equipos' => '',
+            'marca' => '',
+            'serial' => '',
+            'planta_porteria' => '', //este campo es para saber si el equipo se dejo en porteria o salio
+            'id_visita' => 'required',
+            'id_estado' => 'required',
+            'id_carnet' => 'required',
+
+        ]);
+
+        $Object = new DateTime();
+        $Object->setTimezone(new DateTimeZone('America/Bogota'));
+        $fecha_entrada = $Object->format("Y-m-d h:i:s ");
+
+        $recepcionVisita = new RecepcionVisitante;
+
+        $recepcionVisita->id_visita = $request->id_visita;
+
+        $recepcionVisita->observaciones = $request->observaciones;
+        $recepcionVisita->fecha_entrada = $fecha_entrada;
+        $recepcionVisita->observaciones_equipos = $request->observaciones_equipos;
+        $recepcionVisita->marca = $request->marca;
+        $recepcionVisita->serial = $request->serial;
+        $recepcionVisita->planta_porteria = $request->planta_porteria;
+        $recepcionVisita->id_estado = $request->id_estado;
+        $recepcionVisita->id_carnet = $request->id_carnet;
+
+        $recepcionVisita->save();
+
+        return redirect()->route('recepcion-visitas.index')->with('success', 'Datos agragados con extio');
     }
 
     /**
@@ -75,8 +120,12 @@ class RecepcionVisitanteController extends Controller
     {
         /* echo $recepcionVisitante;
         exit; */
-        $visita = Visita::find($recepcionVisitante);
-        dd($visita);
+
+        /* dd($recepcionVisitante);
+        exit; */
+
+        $recepcionVisitante = Visita::find($recepcionVisitante);
+        /* dd($recepcionVisitante); */
 
 
         return view('recepcion-visitas.edit', compact('recepcionVisitante'));

@@ -30,10 +30,9 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="nom_visitante">Nombre del Visitante
-                                                    {{ $recepcionVisitante->id }}</label>
-                                                <input value="{{ $recepcionVisitante->id_visita }}" type="text"
-                                                    name="nom_visitante" class="form-control">
+                                                <label for="nom_visitante">Nombre del Visitante</label>
+                                                <input type="text" name="nom_visitante" class="form-control"
+                                                    value="{{ $recepcionVisitante->id }}">
                                             </div>
                                         </div>
 

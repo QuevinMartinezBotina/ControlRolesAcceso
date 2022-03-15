@@ -16,6 +16,7 @@ use App\Http\Controllers\SedeController;
 use App\Http\Controllers\VisitaController;
 use App\Mail\EmailAutorizacionesVisitas;
 use App\Mail\ReportesAutorizacionesVisitas;
+use App\Models\RecepcionVisitante;
 use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +58,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/aprobaciones', [VisitaController::class, 'aprobaciones'])->name('aprobaciones');
     Route::patch('/aprobaciones/{visita}/aprobar', [VisitaController::class, 'aprobarVisita'])->name('aprobaciones.aprobar');
     Route::patch('/aprobaciones/{visita}/denegar', [VisitaController::class, 'denegarVisita'])->name('aprobaciones.denegar');
+    /*
+    ?Para recepcion de visitas
+    */
+    Route::get('/recepcion-visitas/{recepcion_visita}/create', [RecepcionVisitanteController::class, 'createRecepcionVisita'])->name('recepcion-visitas.createRecepcion');
+
 
     /*
-    !Para aprobaciones a pro medio de correos
+    ?Para aprobaciones a por medio de correos
     */
     Route::get('correos/{visita}', [VisitaController::class, 'showAprobaciones'])->name('aprobaciones.correo');
 });

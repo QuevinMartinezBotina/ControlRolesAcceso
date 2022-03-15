@@ -24,177 +24,111 @@
                             @endif
 
                             @can('crear-visita')
-                                <form method="POST">
+                                <form method="POST" action="{{ route('recepcion-visitas.store') }}">
                                     @csrf
-                                    @method('PATCH')
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12">
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6 d-none ">
                                             <div class="form-group">
-                                                <label for="nom_visitante">Nombre del Visitante
-                                                    {{ $recepcionVisitante->id }}</label>
-                                                <input value="{{ $recepcionVisitante->id_visita }}" type="text"
-                                                    name="nom_visitante" class="form-control">
+                                                <label for="id_visita">id visitante</label>
+                                                <input type="number" name="id_visita" id="" value="{{ $visita->id }}">
                                             </div>
                                         </div>
 
-                                        {{-- <div class="col-xs-3 col-sm-12 col-md-4">
+                                        <div class="col-xs-12 col-sm-12 col-md-6  ">
                                             <div class="form-group">
-                                                <label for="id_documento">Tipo de Documento</label>
-                                                <select name="id_documento" class="form-select form-control">
-                                                    @foreach ($documentos as $documento)
-                                                        <option class="" value="{{ $documento->id }}">
-                                                            {{ $documento->tipo }}
-                                                        </option>
+                                                <label for="id_carnet">Carnet que se asigna</label>
+                                                <select class="form-control" name="id_carnet"
+                                                    value="{{ old('id_estado') }}">
+                                                    @foreach ($carnets as $carnet)
+                                                        @if ($carnet->estado->nom_estado == 'Carnet Disponible')
+                                                            <option style="background: ; " value="{{ $carnet->id }}">
+                                                                {{ $carnet->numero }}
+                                                                <span class="text-info"></span>
+                                                            </option>
+                                                        @endif
                                                     @endforeach
+
                                                 </select>
-                                            </div>
-                                        </div> --}}
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="num_documento">Número de Documento</label>
-                                                <input value="{{ $recepcionVisitante->num_documento }}" type="number"
-                                                    name="num_documento" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="telefono">Teléfono</label>
-                                                <input value="{{ $recepcionVisitante->telefono }}" type="number"
-                                                    name="telefono" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="correo">Correo</label>
-                                                <input value="{{ $recepcionVisitante->correo }}" type="email" name="correo"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="nom_empresa">Nombre Empresa</label>
-                                                <input value="{{ $recepcionVisitante->nom_empresa }}" type="text"
-                                                    name="nom_empresa" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="arl_empresa">ARL Empresa</label>
-                                                <input value="{{ $recepcionVisitante->arl_empresa }}" type="text"
-                                                    name="arl_empresa" class="form-control">
-
-                                            </div>
-                                        </div>
-
-                                        {{-- <div class="col-xs-3 col-sm-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="id_area">Area de Visita</label>
-                                                <select name="id_area" class="form-select form-control">
-                                                    <option class="" value="{{ $recepcionVisitante->id_area }}">
-                                                        {{ $recepcionVisitante->area->nom_area }} <span
-                                                            class="text-success"> - Area
-                                                            Actual</span>
-                                                    </option>
-                                                    @foreach ($areas as $area)
-                                                        <option class="" value="{{ $area->id }}">
-                                                            {{ $area->nom_area }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div> --}}
-
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <div class="form-group">
-                                                <label for="motivo_visita">Motivo de Visita</label>
-                                                <textarea class="w-100" name="motivo_visita" id=""
-                                                    rows="5">{{ $recepcionVisitante->motivo_visita }}</textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="observaciones">Observaciones</label>
-                                                <textarea class="w-100" name="observaciones" id=""
-                                                    rows="5">{{ $recepcionVisitante->observaciones }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        {{-- <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="id_sede">Sede a la que visita</label>
-                                                <select name="id_sede" class="form-select form-control">
-                                                    <option class="" value="{{ $recepcionVisitante->id_sede }}">
-                                                        {{ $recepcionVisitante->sede->nombre_sede }} <span
-                                                            class="text-success"> - Sede
-                                                            Actual</span>
-                                                    </option>
-                                                    @foreach ($sedes as $sede)
-                                                        <option class="" value="{{ $sede->id }}">
-                                                            {{ $sede->nombre_sede }}
-                                                        </option>
+                                                <label for="id_estado">Estado del visitante en las intalaciones</label>
+                                                <select class="form-control" name="id_estado"
+                                                    value="{{ old('id_estado') }}">
+                                                    @foreach ($estados as $estado)
+                                                        @if ($estado->modulo == 'recepcion')
+                                                            <option style="background: ; " value="{{ $estado->id }}">
+                                                                {{ $estado->nom_estado }}
+                                                                <span class="text-info"></span>
+                                                            </option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div> --}}
+                                        </div>
 
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
+
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="fecha_programada">Fecha para la que se programa la visita</label>
-                                                <input
-                                                    value="{{ date('Y-m-d', strtotime($recepcionVisitante->fecha_programada)) }}"
-                                                    type="date" name="fecha_programada" class="form-control">
+                                                <label for="observaciones">Observaciones del visitante</label>
+                                                <textarea class="w-100 p-2" name="observaciones" id="" rows="5"
+                                                    placeholder="Ingrese en este campo detalles sobre el visitante"></textarea>
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
                                             <div class="form-group">
-                                                <label for="fecha_visita">Fecha en la que se realizo la visita</label>
-                                                <input
-                                                    value="{{ date('Y-m-d', strtotime($recepcionVisitante->fecha_visita)) }}"
-                                                    type="date" name="fecha_visita" class="form-control">
-                                                {{-- <p class="text-muted">No seleccione fecha, este campo se deja vacio hasta el
-                                                    día de visita a las
-                                                    instalaciones</p> --}}
-
+                                                <label for="observaciones_equipos">Observaciones de equipos</label>
+                                                <textarea class="w-100 p-2" name="observaciones_equipos" id="" rows="5"
+                                                    placeholder="Ingrese en este campo detalles sobre los equipos"></textarea>
                                             </div>
                                         </div>
-
 
                                         <div class="col-xs-3 col-sm-12 col-md-12  py-3 text-muted">
                                             <h3 class="h4">
-                                                Este apartado es en caso de visitar las instalaciones con un vehículo
+                                                Este apartado es en caso de algun equipo, indicando detalles y si ingresa a las
+                                                instalaciones o queda en portería.
                                             </h3>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="tipo">Tipo</label>
-                                                <input value="{{ $recepcionVisitante->tipo }}" type="text" name="tipo"
-                                                    class="form-control">
+                                                <label for="marca">Marca</label>
+                                                <input type="text" name="marca" class="form-control">
 
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="placa">Placa del Vehículo</label>
-                                                <input value="{{ $recepcionVisitante->placa }}" type="text" name="placa"
-                                                    class="form-control">
+                                                <label for="serial">Seríal</label>
+                                                <input type="text" name="serial" class="form-control">
 
                                             </div>
                                         </div>
 
                                         <div class="col-xs-3 col-sm-12 col-md-4">
                                             <div class="form-group">
-                                                <label for="color">Color</label>
-                                                <input value="{{ $recepcionVisitante->color }}" type="text" name="color"
-                                                    class="form-control">
+                                                <label for="color">¿Quedo en portería o ingreso a planta?</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="planta_porteria"
+                                                        id="quedoEnPorteria" checked value="porteria">
+                                                    <label class="form-check-label" for="quedoEnPorteria">
+                                                        Quedo en portería
+                                                    </label>
+
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="planta_porteria"
+                                                        id="ingresoEnIntalaciones" value="instalaciones">
+                                                    <label class="form-check-label" for="ingresoEnIntalaciones">
+                                                        Ingreso a las instalaciones
+                                                    </label>
+                                                </div>
 
                                             </div>
                                         </div>
