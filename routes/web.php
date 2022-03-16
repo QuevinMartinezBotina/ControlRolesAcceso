@@ -11,6 +11,7 @@ use App\Http\Controllers\CargoController;
 use App\Http\Controllers\CarnetController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\RecepcionProveedoreController;
 use App\Http\Controllers\RecepcionVisitanteController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\VisitaController;
@@ -52,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('cargos', CargoController::class);
     Route::resource('visitas', VisitaController::class);
     Route::resource('recepcion-visitas', RecepcionVisitanteController::class);
+    Route::resource('recepcion-proveedores', RecepcionProveedoreController::class);
     /*
     ?Espacio para ruta de aprobaciones
     */
