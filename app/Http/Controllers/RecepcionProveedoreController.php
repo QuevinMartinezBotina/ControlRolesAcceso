@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class RecepcionProveedoreController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission:ver-proveedor|crear-proveedor|editar-proveedor|borrar-proveedor', ['only' => ['index']]);
+        $this->middleware('permission:crear-proveedor', ['only' => ['create', 'store']]);
+        $this->middleware('permission:editar-proveedor', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:borrar-proveedor', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,9 @@ class RecepcionProveedoreController extends Controller
      */
     public function index()
     {
-        //
+        $proveedores = RecepcionProveedore::all();
+
+        return view('recepcion-proveedores.index', compact('proveedores'));
     }
 
     /**

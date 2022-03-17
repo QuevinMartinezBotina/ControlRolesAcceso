@@ -105,3 +105,12 @@
         </a>
     </li>
 @endcan
+
+
+@can('ver-proveedor')
+    <li class="side-menus {{ Request::is('*') ? 'active' : '' }}">
+        <a class=" nav-link  m-1" href="{{ route('recepcion-proveedores.index') }}">
+            <i class=" fas fa-concierge-bell"></i><span>Recepción Proveedores</span>
+        </a>
+    </li>
+@endcan
