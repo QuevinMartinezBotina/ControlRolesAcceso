@@ -14,16 +14,16 @@ class RecepcionVisitante extends Model
     use HasFactory;
 
     static $rules = [
-        'observaciones' => 'required',
-        'fecha_entrada' => 'required',
-        'fecha_salida' => 'required',
-        'observaciones_equipos' => 'required',
-        'marca' => 'required',
-        'serial' => 'required',
-        'planta_porteria' => 'required', //este campo es para saber si el equipo se dejo en porteria o salio
-        'id_visita' => 'required',
-        'id_estado' => 'required',
-        'id_carnet' => 'required',
+        'observaciones' /* => 'required' */,
+        'fecha_entrada' /* => 'required' */,
+        'fecha_salida' /* => 'required' */,
+        'observaciones_equipos' /* => 'required' */,
+        'marca' /* => 'required' */,
+        'serial' /* => 'required' */,
+        'planta_porteria' /* => 'required' */, //este campo es para saber si el equipo se dejo en porteria o salio
+        'id_visita' /* => 'required' */,
+        'id_estado' /* => 'required' */,
+        'id_carnet' /* => 'required' */,
     ];
 
     protected $perPage = 20;

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documento;
+use App\Models\Estado;
 use App\Models\RecepcionProveedore;
 use Illuminate\Http\Request;
 
@@ -35,7 +37,10 @@ class RecepcionProveedoreController extends Controller
      */
     public function create()
     {
-        //
+        $estados = Estado::all();
+        $documentos = Documento::all();
+
+        return view('recepcion-proveedores.create', compact('estados', 'documentos'));
     }
 
     /**
@@ -46,7 +51,8 @@ class RecepcionProveedoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo 'Hello world';
+        exit;
     }
 
     /**

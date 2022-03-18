@@ -23,6 +23,9 @@
                                 </div>
                             @endif
 
+                            @can('crear-recepcion-proveedor')
+                                <a class="btn btn-success mb-4" href="{{ route('recepcion-proveedores.create') }}">Nuevo</a>
+                            @endcan
 
                             @can('ver-recepcion-proveedor')
                                 <table id="dataTables" class="table table-bordered  display nowrap table-hover table-striped"
