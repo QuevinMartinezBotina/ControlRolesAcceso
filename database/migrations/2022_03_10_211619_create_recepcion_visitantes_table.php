@@ -14,6 +14,7 @@ class CreateRecepcionVisitantesTable extends Migration
     public function up()
     {
         Schema::create('recepcion_visitantes', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
             $table->string('observaciones')->nullable();
             $table->timestamp('fecha_entrada')->nullable();

@@ -15,7 +15,6 @@ class CreateVisitasTable extends Migration
     {
         Schema::create('visitas', function (Blueprint $table) {
             $table->engine = "InnoDB";
-
             $table->id();
             $table->String('nom_visitante');
             $table->bigInteger('num_documento');
