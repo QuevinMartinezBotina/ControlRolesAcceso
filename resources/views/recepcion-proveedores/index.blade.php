@@ -51,7 +51,12 @@
                                             <tr>
                                                 <td class="">{{ $proveedor->empresa_transportadora }}</td>
                                                 <td class="">{{ $proveedor->empresa_vendedora }}</td>
-                                                <td class="">{{ $proveedor->estado->nom_estado }}</td>
+                                                <td class="">
+                                                    <span class="badge d-flex justify-content-center p-2 text-dark fs-1"
+                                                        style="background: {{ $proveedor->estado->color }}">
+                                                        {{ $proveedor->estado->nom_estado }}
+                                                    </span>
+                                                </td>
                                                 <td class="">{{ $proveedor->num_placa }}</td>
                                                 <td class="">{{ $proveedor->color }}</td>
                                                 <td class="">{{ $proveedor->tipo }}</td>
@@ -60,32 +65,48 @@
                                                 <td class="">{{ $proveedor->num_documento }}</td>
                                                 <td class="">{{ $proveedor->nombre }}</td>
                                                 <td class="">{{ $proveedor->observaciones }}</td>
-
                                                 <td>
                                                     <div class="row">
-
                                                         <div class="col-md-12 col-12">
+                                                            <div class="row">
 
-                                                            <form class="formEliminar"
-                                                                action="{{ route('recepcion-proveedores.destroy', $sede->id) }}"
-                                                                method="post">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                {{-- Botones de editar --}}
+                                                                <form class="formEliminar col-6"
+                                                                    action="{{ route('recepcion-proveedores.destroy', $proveedor->id) }}"
+                                                                    method="post">
+                                                                    @method('DELETE')
+                                                                    @csrf
+                                                                    {{-- Botones de editar --}}
+                                                                    @can('editar-proveedor')
+                                                                        <a class="btn btn-primary"
+                                                                            href="{{ route('recepcion-proveedores.edit', $proveedor->id) }}">Editar
+                                                                        </a>
+                                                                    @endcan
+                                                                    @can('borrar-proveedor')
+                                                                        {{-- Boton eliminar --}}
+                                                                        <button class="btn btn-danger" type="submit">Borrar</button>
+                                                                    @endcan
+                                                                </form>
+
                                                                 @can('editar-proveedor')
-                                                                    <a class="btn btn-primary"
-                                                                        href="{{ route('recepcion-proveedores.edit', $sede->id) }}">Editar
-                                                                    </a>
+                                                                    <form class="col-5 ml-2"
+                                                                        action="{{ route('recepcion-proveedores.salida', ['recepcion_proveedor' => $proveedor->id]) }}"
+                                                                        method="POST">
+
+                                                                        @csrf
+                                                                        @method('PATCH')
+
+                                                                        @if ($proveedor->fecha_salida == null)
+                                                                            <button type="submit"
+                                                                                class="btn btn-success">Salio</button>
+                                                                        @endif
+
+
+                                                                    </form>
                                                                 @endcan
-                                                                @can('borrar-proveedor')
-                                                                    {{-- Boton eliminar --}}
-                                                                    <button class="btn btn-danger" type="submit">Borrar</button>
-                                                                @endcan
-                                                            </form>
+                                                            </div>
 
                                                         </div>
                                                     </div>
-
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -139,10 +139,7 @@ class VisitaController extends Controller
 
         echo $request->nom_visitante;
 
-        Mail::to(
-            $emailJefeArea,
-            'asistemas.rcosta@avicolaelmadrono.com'
-        )->send(new EmailAutorizacionesVisitas($visita));
+        Mail::to($emailJefeArea)->send(new EmailAutorizacionesVisitas($visita));
 
         return redirect()->route('visitas.create')->with('success', 'Visita creada con exito!');
     }

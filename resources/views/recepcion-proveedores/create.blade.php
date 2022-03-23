@@ -41,15 +41,39 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
+
+                                            {{-- Datos empresa transportadora o de venta --}}
+                                            <div class="row border-bottom py-3">
+
+                                                <h4 class="h4 col-12 p-2">Datos de empresa del proveedor</h4>
+                                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="empresa_transportadora">Nombre empresa
+                                                            transportadora</label>
+                                                        <input type="text" name="empresa_transportadora" class="form-control"
+                                                            value="{{ old('empresa_transportadora') }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="empresa_vendedora">Nombre de empresa venderora</label>
+                                                        <input type="text" name="empresa_vendedora" class="form-control"
+                                                            value="{{ old('empresa_vendedora') }}">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
                                             {{-- Datos pro si entra a pie --}}
-                                            <div class="row border-bottom">
+                                            <div class="row border-bottom py-3">
 
                                                 <h4 class="h4 col-12 p-2">En caso de ingreso a pie</h4>
                                                 <div class="col-xs-12 col-sm-12 col-md-5">
                                                     <div class="form-group">
-                                                        <label for="nom_visitante">Nombre del Visitante</label>
-                                                        <input type="text" name="nom_visitante" class="form-control"
-                                                            value="{{ old('nom_visitante') }}">
+                                                        <label for="nombre">Nombre del Visitante</label>
+                                                        <input type="text" name="nombre" class="form-control"
+                                                            value="{{ old('nombre') }}">
                                                     </div>
                                                 </div>
 
@@ -77,7 +101,7 @@
                                             </div>
 
                                             {{-- Datos pro si entra en vehiculo --}}
-                                            <div class="row border-bottom my-3">
+                                            <div class="row border-bottom my-3 py-3">
 
                                                 <h4 class="h4 col-12 p-2">En caso de ingreso en vehículo</h4>
 

@@ -64,10 +64,10 @@ Route::group(['middleware' => ['auth']], function () {
     ?Para recepcion de visitas
     */
     Route::get('/recepcion-visitas/{recepcion_visita}/create', [RecepcionVisitanteController::class, 'createRecepcionVisita'])->name('recepcion-visitas.createRecepcion');
-
-
     /*
-    ?Para aprobaciones a por medio de correos
+    ?Para recepcion de proveedores
     */
+    Route::patch('/recepcion-proveedores/{recepcion_proveedor}/salida', [RecepcionProveedoreController::class, 'salidaProveedor'])->name('recepcion-proveedores.salida');
+
     Route::get('correos/{visita}', [VisitaController::class, 'showAprobaciones'])->name('aprobaciones.correo');
 });
