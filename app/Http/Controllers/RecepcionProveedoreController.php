@@ -17,6 +17,7 @@ class RecepcionProveedoreController extends Controller
         $this->middleware('permission:ver-proveedor|crear-proveedor|editar-proveedor|borrar-proveedor', ['only' => ['index']]);
         $this->middleware('permission:crear-proveedor', ['only' => ['create', 'store']]);
         $this->middleware('permission:editar-proveedor', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:editar-salida', ['only' => ['salidaProveedor']]);
         $this->middleware('permission:borrar-proveedor', ['only' => ['destroy']]);
     }
 
@@ -144,7 +145,10 @@ class RecepcionProveedoreController extends Controller
      */
     public function edit(RecepcionProveedore $recepcionProveedore)
     {
-        //
+        $estados = Estado::all();
+        $documentos = Documento::all();
+
+        return view('recepcion-proveedores.edit', compact('estados', 'documentos', 'recepcionProveedore'));
     }
 
     /**
@@ -156,7 +160,12 @@ class RecepcionProveedoreController extends Controller
      */
     public function update(Request $request, RecepcionProveedore $recepcionProveedore)
     {
-        //
+        /* echo "Hello world";
+        exit; */
+
+        $recepcionProveedore->update($request->all());
+
+        return redirect()->route('recepcion-proveedores.index')->with('success', 'Actualizado con exito!');
     }
 
     /**
@@ -165,9 +174,13 @@ class RecepcionProveedoreController extends Controller
      * @param  \App\Models\RecepcionProveedore  $recepcionProveedore
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RecepcionProveedore $recepcionProveedore)
+    public function destroy($recepcionProveedore)
     {
-        //
+        /* echo 'Hello world' . $recepcionProveedore;
+        exit; */
+
+        RecepcionProveedore::find($recepcionProveedore)->delete();
+        return redirect()->route('recepcion-proveedores.index')->with('success', 'Eliminado con exito!');
     }
 
     public function salidaProveedor(Request $request,  $recepcionProveedore)

@@ -103,8 +103,9 @@ class SedeController extends Controller
      * @param  \App\Models\Sede  $sede
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sede $sede)
+    public function destroy($sede)
     {
-        //
+        Sede::find($sede)->delete();
+        return redirect()->route('sedes.index')/* ->with('success', 'Eliminado con exito!') */;
     }
 }

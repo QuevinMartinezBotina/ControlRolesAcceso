@@ -1,9 +1,12 @@
 @extends('layouts.app')
+@section('title')
+    Editar viista de proveedor
+@endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar visita</h3>
+            <h3 class="page__heading">Editar viista de proveedor</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,195 +26,141 @@
                                 </div>
                             @endif
 
-                            @can('crear-visita')
-                                <form method="POST">
+                            @can('crear-estado')
+                                <form action="{{ route('recepcion-proveedores.update', $recepcionProveedore->id) }}"
+                                    method="POST">
                                     @csrf
                                     @method('PATCH')
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="nom_visitante">Nombre del Visitante</label>
-                                                <input type="text" name="nom_visitante" class="form-control"
-                                                    value="{{ $recepcionVisitante->id }}">
-                                            </div>
-                                        </div>
 
-                                        {{-- <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="id_documento">Tipo de Documento</label>
-                                                <select name="id_documento" class="form-select form-control">
-                                                    @foreach ($documentos as $documento)
-                                                        <option class="" value="{{ $documento->id }}">
-                                                            {{ $documento->tipo }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div> --}}
+                                            {{-- Datos empresa transportadora o de venta --}}
+                                            <div class="row border-bottom py-3">
 
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="num_documento">Número de Documento</label>
-                                                <input value="{{ $recepcionVisitante->num_documento }}" type="number"
-                                                    name="num_documento" class="form-control">
-                                            </div>
-                                        </div>
+                                                <h4 class="h4 col-12 p-2">Datos de empresa del proveedor</h4>
+                                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="empresa_transportadora">Nombre empresa
+                                                            transportadora</label>
+                                                        <input type="text" name="empresa_transportadora" class="form-control"
+                                                            value="{{ $recepcionProveedore->empresa_transportadora }}">
+                                                    </div>
+                                                </div>
 
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="telefono">Teléfono</label>
-                                                <input value="{{ $recepcionVisitante->telefono }}" type="number"
-                                                    name="telefono" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="correo">Correo</label>
-                                                <input value="{{ $recepcionVisitante->correo }}" type="email" name="correo"
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="nom_empresa">Nombre Empresa</label>
-                                                <input value="{{ $recepcionVisitante->nom_empresa }}" type="text"
-                                                    name="nom_empresa" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="arl_empresa">ARL Empresa</label>
-                                                <input value="{{ $recepcionVisitante->arl_empresa }}" type="text"
-                                                    name="arl_empresa" class="form-control">
+                                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="empresa_vendedora">Nombre de empresa venderora</label>
+                                                        <input type="text" name="empresa_vendedora" class="form-control"
+                                                            value="{{ $recepcionProveedore->empresa_vendedora }}">
+                                                    </div>
+                                                </div>
 
                                             </div>
-                                        </div>
 
-                                        {{-- <div class="col-xs-3 col-sm-12 col-md-12">
-                                            <div class="form-group">
-                                                <label for="id_area">Area de Visita</label>
-                                                <select name="id_area" class="form-select form-control">
-                                                    <option class="" value="{{ $recepcionVisitante->id_area }}">
-                                                        {{ $recepcionVisitante->area->nom_area }} <span
-                                                            class="text-success"> - Area
-                                                            Actual</span>
-                                                    </option>
-                                                    @foreach ($areas as $area)
-                                                        <option class="" value="{{ $area->id }}">
-                                                            {{ $area->nom_area }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
+                                            {{-- Datos pro si entra a pie --}}
+                                            <div class="row border-bottom py-3">
+
+                                                <h4 class="h4 col-12 p-2">En caso de ingreso a pie</h4>
+                                                <div class="col-xs-12 col-sm-12 col-md-5">
+                                                    <div class="form-group">
+                                                        <label for="nombre">Nombre del Visitante</label>
+                                                        <input type="text" name="nombre" class="form-control"
+                                                            value="{{ $recepcionProveedore->nombre }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-3 col-sm-12 col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="id_documento">Tipo de Documento</label>
+                                                        <select name="id_documento" class="form-select form-control"
+                                                            value="{{ $recepcionProveedore->id_documento }}">
+                                                            @foreach ($documentos as $documento)
+                                                                <option class="" value="{{ $documento->id }}">
+                                                                    {{ $documento->tipo }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-3 col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="num_documento">Número de Documento</label>
+                                                        <input type="number" name="num_documento" class="form-control"
+                                                            value="{{ $recepcionProveedore->num_documento }}">
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div> --}}
 
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <div class="form-group">
-                                                <label for="motivo_visita">Motivo de Visita</label>
-                                                <textarea class="w-100" name="motivo_visita" id=""
-                                                    rows="5">{{ $recepcionVisitante->motivo_visita }}</textarea>
+                                            {{-- Datos pro si entra en vehiculo --}}
+                                            <div class="row border-bottom my-3 py-3">
+
+                                                <h4 class="h4 col-12 p-2">En caso de ingreso en vehículo</h4>
+
+                                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="tipo">Tipo de vehículo</label>
+                                                        <input type="text" name="tipo" class="form-control"
+                                                            value="{{ $recepcionProveedore->tipo }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="num_placa">Número de placa</label>
+                                                        <input type="text" name="num_placa" class="form-control"
+                                                            value="{{ $recepcionProveedore->num_placa }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-3 col-sm-12 col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="color">Color</label>
+                                                        <input type="text" name="color" class="form-control"
+                                                            value="{{ $recepcionProveedore->color }}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-3 col-sm-12 col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="num_personas">Número de personas</label>
+                                                        <input type="number" name="num_personas" class="form-control"
+                                                            value="{{ $recepcionProveedore->num_personas }}">
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <div class="form-group">
-                                                <label for="observaciones">Observaciones</label>
-                                                <textarea class="w-100" name="observaciones" id=""
-                                                    rows="5">{{ $recepcionVisitante->observaciones }}</textarea>
+                                            {{-- Campo para observaciones generales --}}
+                                            <div class="row border-bottom my-3">
+
+                                                <h4 class="h4 col-12 p-2">Campo para observaciones generales</h4>
+
+                                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="observaciones">Observaciones generales</label>
+                                                        <textarea class="w-100 p-2" name="observaciones" id=""
+                                                            rows="5">{{ $recepcionProveedore->observaciones }}</textarea>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        {{-- <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="id_sede">Sede a la que visita</label>
-                                                <select name="id_sede" class="form-select form-control">
-                                                    <option class="" value="{{ $recepcionVisitante->id_sede }}">
-                                                        {{ $recepcionVisitante->sede->nombre_sede }} <span
-                                                            class="text-success"> - Sede
-                                                            Actual</span>
-                                                    </option>
-                                                    @foreach ($sedes as $sede)
-                                                        <option class="" value="{{ $sede->id }}">
-                                                            {{ $sede->nombre_sede }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div> --}}
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
 
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="fecha_programada">Fecha para la que se programa la visita</label>
-                                                <input
-                                                    value="{{ date('Y-m-d', strtotime($recepcionVisitante->fecha_programada)) }}"
-                                                    type="date" name="fecha_programada" class="form-control">
-                                            </div>
-                                        </div>
+                                                <button type="submit" class="btn btn-success m-1 ">Guardar</button>
 
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="fecha_visita">Fecha en la que se realizo la visita</label>
-                                                <input
-                                                    value="{{ date('Y-m-d', strtotime($recepcionVisitante->fecha_visita)) }}"
-                                                    type="date" name="fecha_visita" class="form-control">
-                                                {{-- <p class="text-muted">No seleccione fecha, este campo se deja vacio hasta el
-                                                    día de visita a las
-                                                    instalaciones</p> --}}
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-xs-3 col-sm-12 col-md-12  py-3 text-muted">
-                                            <h3 class="h4">
-                                                Este apartado es en caso de visitar las instalaciones con un vehículo
-                                            </h3>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="tipo">Tipo</label>
-                                                <input value="{{ $recepcionVisitante->tipo }}" type="text" name="tipo"
-                                                    class="form-control">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="placa">Placa del Vehículo</label>
-                                                <input value="{{ $recepcionVisitante->placa }}" type="text" name="placa"
-                                                    class="form-control">
+                                                <a class="btn btn-primary m-1"
+                                                    href="{{ route('recepcion-proveedores.index') }}">Volver</a>
 
                                             </div>
-                                        </div>
-
-                                        <div class="col-xs-3 col-sm-12 col-md-4">
-                                            <div class="form-group">
-                                                <label for="color">Color</label>
-                                                <input value="{{ $recepcionVisitante->color }}" type="text" name="color"
-                                                    class="form-control">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-12 col-md-12">
-
-                                            <button type="submit" class="btn btn-success m-1 ">Guardar</button>
-                                            <a class="btn btn-primary m-1"
-                                                href="{{ route('recepcion-visitas.index') }}">Volver</a>
-
                                         </div>
                                 </form>
-                            @endcan
+                            </div>
+                        @endcan
 
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 @endsection

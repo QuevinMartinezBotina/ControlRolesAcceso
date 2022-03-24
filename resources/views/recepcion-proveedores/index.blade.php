@@ -87,7 +87,7 @@
                                                                     @endcan
                                                                 </form>
 
-                                                                @can('editar-proveedor')
+                                                                @can('editar-salida')
                                                                     <form class="col-5 ml-2"
                                                                         action="{{ route('recepcion-proveedores.salida', ['recepcion_proveedor' => $proveedor->id]) }}"
                                                                         method="POST">

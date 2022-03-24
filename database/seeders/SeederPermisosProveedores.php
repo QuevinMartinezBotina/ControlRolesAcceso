@@ -20,6 +20,7 @@ class SeederPermisosProveedores extends Seeder
             'ver-proveedor',
             'crear-proveedor',
             'editar-proveedor',
+            'editar-salida',
             'borrar-proveedor',
 
         ];

@@ -161,6 +161,7 @@
                                                 @endcan
 
                                             </div>
+                                        </div>
                                 </form>
                             @endcan
 
