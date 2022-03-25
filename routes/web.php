@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
     ?Para recepcion de visitas
     */
     Route::get('/recepcion-visitas/{recepcion_visita}/create', [RecepcionVisitanteController::class, 'createRecepcionVisita'])->name('recepcion-visitas.createRecepcion');
+    Route::patch('/recepcion-visitas/{recepcion_visita}/salida', [RecepcionVisitanteController::class, 'salidaVisitante'])->name('recepcion-visitas.salida');
     /*
     ?Para recepcion de proveedores
     */

@@ -97,14 +97,6 @@ integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEUL
 
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
 
-<script>
-    $(document).ready(function() {
-        $('#dataTables').DataTable({
-            responsive: true
-        });
-    });
-</script>
-
 <!-- Template JS File -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>
 <script src="{{ asset('web/js/scripts.js') }}"></script>

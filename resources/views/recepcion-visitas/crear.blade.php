@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-6  ">
+                                        <div class="col-xs-12 col-sm-12 col-md-12  ">
                                             <div class="form-group">
                                                 <label for="id_carnet">Carnet que se asigna</label>
                                                 <select class="form-control" name="id_carnet"
@@ -53,7 +53,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                        {{-- <div class="col-xs-12 col-sm-12 col-md-6">
                                             <div class="form-group">
                                                 <label for="id_estado">Estado del visitante en las intalaciones</label>
                                                 <select class="form-control" name="id_estado"
@@ -68,7 +68,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
 
 

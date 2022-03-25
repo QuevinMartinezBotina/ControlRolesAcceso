@@ -30,9 +30,9 @@ class RecepcionVisitanteController extends Controller
     public function index()
     {
         $visitas = Visita::all();
+        $visitasInstalaciones = RecepcionVisitante::all();
 
-
-        return view('recepcion-visitas.index', compact('visitas'));
+        return view('recepcion-visitas.index', compact('visitas', 'visitasInstalaciones'));
     }
 
     /**
@@ -72,26 +72,36 @@ class RecepcionVisitanteController extends Controller
             'serial' => '',
             'planta_porteria' => '', //este campo es para saber si el equipo se dejo en porteria o salio
             'id_visita' => 'required',
-            'id_estado' => 'required',
+            'id_estado' => '',
             'id_carnet' => 'required',
 
         ]);
 
+        //*Fecha
         $Object = new DateTime();
         $Object->setTimezone(new DateTimeZone('America/Bogota'));
-        $fecha_entrada = $Object->format("Y-m-d h:i:s ");
+        $fecha_sistema = $Object->format("Y-m-d h:i:s ");
+
+        //*Estado
+        $estados = Estado::all('id', 'nom_estado');
+
+        foreach ($estados as $estado) {
+            if ($estado->nom_estado == 'En instalaciones') {
+                $id_Estado = $estado->id;
+            }
+        }
 
         $recepcionVisita = new RecepcionVisitante;
 
         $recepcionVisita->id_visita = $request->id_visita;
 
         $recepcionVisita->observaciones = $request->observaciones;
-        $recepcionVisita->fecha_entrada = $fecha_entrada;
+        $recepcionVisita->fecha_entrada = $fecha_sistema;
         $recepcionVisita->observaciones_equipos = $request->observaciones_equipos;
         $recepcionVisita->marca = $request->marca;
         $recepcionVisita->serial = $request->serial;
         $recepcionVisita->planta_porteria = $request->planta_porteria;
-        $recepcionVisita->id_estado = $request->id_estado;
+        $recepcionVisita->id_estado = $id_Estado;
         $recepcionVisita->id_carnet = $request->id_carnet;
 
         $recepcionVisita->save();
@@ -149,8 +159,49 @@ class RecepcionVisitanteController extends Controller
      * @param  \App\Models\RecepcionVisitante  $recepcionVisitante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RecepcionVisitante $recepcionVisitante)
+    public function destroy($recepcionVisitante)
     {
-        //
+        /* dd($recepcionVisitante);
+        exit; */
+
+        RecepcionVisitante::find($recepcionVisitante)->delete();
+        return redirect()->route('recepcion-visitas.index')/* ->with('SuccessSalidaVisita', 'Eliminado con exito!') */;
+    }
+
+    /*
+        !Funciones adiconales para el modulo
+    */
+
+    public function salidaVisitante(Request $request,  $recepcionVisitante)
+    {
+        /* echo 'Hello world';
+        dd($recepcionVisitante);
+        exit; */
+
+        /*
+            * Operaciones para encontrar estado y asignar horas y fechas
+        */
+
+        //?Fecha
+        $Object = new DateTime();
+        $Object->setTimezone(new DateTimeZone('America/Bogota'));
+        $fecha_sistema = $Object->format("Y-m-d h:i:s ");
+
+        //?Estado
+        $estados = Estado::all('id', 'nom_estado');
+
+        foreach ($estados as $estado) {
+            if ($estado->nom_estado == 'Fuera de instalaciones') {
+                $id_Estado = $estado->id;
+            }
+        }
+
+        $proveedor = RecepcionVisitante::find($recepcionVisitante);
+
+        $proveedor->id_estado = $id_Estado;
+        $proveedor->fecha_salida = $fecha_sistema;
+        $proveedor->save();
+
+        return redirect()->route('recepcion-visitas.index')->with('SuccessSalidaVisita', 'Salida registrada con exito!');
     }
 }
