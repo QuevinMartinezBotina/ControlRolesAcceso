@@ -144,9 +144,14 @@
                     <div class="col-md-12 h6 d-flex justify-content-center  my-2">
                         <div class="row d-flex justify-content-center">
                             <div class="col-12 col-md-12">
-                                <a href="http://127.0.0.1:8000/visitas/{{ $request->id }}" class="btn btn-success "
+                                {{-- Para production --}}
+                                <a href="http://192.168.0.148/visitas/{{ $request->id }}" class="btn btn-success "
                                     type="submit">Ver detalles
                                 </a>
+                                {{-- Para development --}}
+                                {{-- <a href="http://127.0.0.1:8000/visitas/{{ $request->id }}" class="btn btn-success "
+                                    type="submit">Ver detalles
+                                </a> --}}
                             </div>
                         </div>
 
