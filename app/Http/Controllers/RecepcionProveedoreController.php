@@ -145,6 +145,7 @@ class RecepcionProveedoreController extends Controller
      */
     public function edit(RecepcionProveedore $recepcionProveedore)
     {
+
         $estados = Estado::all();
         $documentos = Documento::all();
 
@@ -160,12 +161,15 @@ class RecepcionProveedoreController extends Controller
      */
     public function update(Request $request, RecepcionProveedore $recepcionProveedore)
     {
-        /* echo "Hello world";
-        exit; */
+        request()->validate([
+            'numero' => 'required',
+            'id_estado' => 'required',
+        ]);
 
         $recepcionProveedore->update($request->all());
 
-        return redirect()->route('recepcion-proveedores.index')->with('success', 'Actualizado con exito!');
+
+        return redirect()->route('carnets.index')->with('success', 'Actualizado con exito!');
     }
 
     /**

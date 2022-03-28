@@ -18,7 +18,7 @@ class SeederPermisosRecepcionVisitas extends Seeder
         $permisos = [
             //Tabla recepcion visitas
             'ver-recepcion-visita',
-            /* 'crear-recepcion-visita', */
+            'crear-recepcion-visita',
             'editar-recepcion-visita',
             'borrar-recepcion-visita',
 

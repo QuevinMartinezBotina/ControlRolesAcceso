@@ -128,17 +128,10 @@ class RecepcionVisitanteController extends Controller
      */
     public function edit($recepcionVisitante)
     {
-        /* echo $recepcionVisitante;
-        exit; */
+        $visitaInstalaciones = RecepcionVisitante::find($recepcionVisitante);
+        $carnets = Carnet::all();
 
-        /* dd($recepcionVisitante);
-        exit; */
-
-        $recepcionVisitante = Visita::find($recepcionVisitante);
-        /* dd($recepcionVisitante); */
-
-
-        return view('recepcion-visitas.edit', compact('recepcionVisitante'));
+        return view('recepcion-visitas.edit', compact('carnets', 'visitaInstalaciones'));
     }
 
     /**
@@ -148,9 +141,23 @@ class RecepcionVisitanteController extends Controller
      * @param  \App\Models\RecepcionVisitante  $recepcionVisitante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RecepcionVisitante $recepcionVisitante)
+    public function update(Request $request,  $recepcionVisitante)
     {
-        //
+        /* echo 'Hello world';
+        dd($recepcionVisitante);
+        exit; */
+
+        $visita = RecepcionVisitante::find($recepcionVisitante);
+
+        $visita->observaciones = $request->observaciones;
+        $visita->observaciones_equipos = $request->observaciones_equipos;
+        $visita->marca = $request->marca;
+        $visita->serial = $request->serial;
+        $visita->planta_porteria = $request->planta_porteria;
+        $visita->id_carnet = $request->id_carnet;
+        $visita->update();
+
+        return redirect()->route('recepcion-visitas.index')->with('SuccessSalidaVisita', 'Actualizado con exito!');
     }
 
     /**
@@ -169,7 +176,7 @@ class RecepcionVisitanteController extends Controller
     }
 
     /*
-        !Funciones adiconales para el modulo
+        !Funciones adicionales para el modulo
     */
 
     public function salidaVisitante(Request $request,  $recepcionVisitante)

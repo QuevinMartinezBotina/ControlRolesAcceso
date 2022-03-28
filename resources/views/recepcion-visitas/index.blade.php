@@ -36,22 +36,9 @@
                                         <tr class="text-white">
                                             {{-- <th class="text-white ">ID</th> --}}
                                             <th class="text-white ">Nombre del Visitante</th>
-                                            {{-- <th class="text-white ">Tipo de Documento</th>
-                                            <th class="text-white ">Número de Documento</th>
-                                            <th class="text-white ">Teléfono</th>
-                                            <th class="text-white ">Correo</th> --}}
-                                            {{-- <th class="text-white ">Empresa</th> --}}
-                                            {{-- <th class="text-white ">Arl Empresa</th> --}}
                                             <th class="text-white ">Area de Visita</th>
-                                            {{-- <th class="text-white ">Motivo</th> --}}
-                                            {{-- <th class="text-white ">Observaciones</th> --}}
                                             <th class="text-white ">Fecha Programada</th>
                                             <th class="text-white ">Estado</th>
-                                            {{-- <th class="text-white ">Fecha Visita</th> --}}
-                                            {{-- <th class="text-white ">Sede</th> --}}
-                                            {{-- <th class="text-white ">Placa</th>
-                                            <th class="text-white ">Color</th>
-                                            <th class="text-white ">Tipo Vehículo</th> --}}
                                             <th class="text-white ">Acciones </th>
                                         </tr>
                                     </thead>
@@ -73,7 +60,7 @@
 
                                                         <div class="col-md-12 col-12">
 
-                                                            @can('editar-recepcion-visita')
+                                                            @can('crear-recepcion-visita')
                                                                 @if ($visita->estado->nom_estado == 'Visita Aprobada')
                                                                     <a class="btn btn-primary"
                                                                         href="{{ route('recepcion-visitas.createRecepcion', ['recepcion_visita' => $visita->id]) }}">Entrada
@@ -95,24 +82,10 @@
                                         @endforeach
                                     </tbody>
                                     <tfoot class="">
-                                        {{-- <th class="text-white ">ID</th> --}}
                                         <th class=" ">Nombre del Visitante</th>
-                                        {{-- <th class=" ">Tipo de Documento</th>
-                                        <th class=" ">Número de Documento</th>
-                                        <th class=" ">Teléfono</th>
-                                        <th class=" ">Correo</th> --}}
-                                        {{-- <th class=" ">Empresa</th> --}}
-                                        {{-- <th class=" ">Arl Empresa</th> --}}
                                         <th class=" ">Area de Visita</th>
-                                        {{-- <th class=" ">Motivo</th> --}}
-                                        {{-- <th class=" ">Observaciones</th> --}}
                                         <th class=" ">Fecha Programada</th>
                                         <th class=" ">Estado</th>
-                                        {{-- <th class=" ">Fecha Visita</th> --}}
-                                        {{-- <th class=" ">Sede</th> --}}
-                                        {{-- <th class=" ">Placa</th>
-                                        <th class=" ">Color</th>
-                                        <th class=" ">Tipo Vehículo</th> --}}
                                         <th class=" ">Acciones </th>
                                     </tfoot>
                                 </table>
@@ -156,7 +129,6 @@
                                     width="100%">
                                     <thead class="avi-bg-grey text-white">
                                         <tr class="text-white">
-
                                             <th class="text-white ">Nombre del Visitante</th>
                                             <th class="text-white ">Número documento</th>
                                             <th class="text-white ">Estado en instalaciones</th>
@@ -187,12 +159,12 @@
                                                                     @method('DELETE')
                                                                     @csrf
                                                                     {{-- Botones de editar --}}
-                                                                    @can('editar-proveedor')
+                                                                    @can('editar-recepcion-visita')
                                                                         <a class="btn btn-primary"
-                                                                            href="{{-- {{ route('recepcion-proveedores.edit', $proveedor->id) }} --}}">Editar
+                                                                            href="{{ route('recepcion-visitas.edit', ['recepcion_visita' => $visita->id]) }}">Editar
                                                                         </a>
                                                                     @endcan
-                                                                    @can('borrar-proveedor')
+                                                                    @can('borrar-recepcion-visita')
                                                                         {{-- Boton eliminar --}}
                                                                         <button class="btn btn-danger" type="submit">Borrar</button>
                                                                     @endcan

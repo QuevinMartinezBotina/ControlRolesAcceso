@@ -39,7 +39,7 @@
                                             <div class="form-group">
                                                 <label for="id_carnet">Carnet que se asigna</label>
                                                 <select class="form-control" name="id_carnet"
-                                                    value="{{ old('id_estado') }}">
+                                                    value="{{ old('id_carnet') }}">
                                                     @foreach ($carnets as $carnet)
                                                         @if ($carnet->estado->nom_estado == 'Carnet Disponible')
                                                             <option style="background: ; " value="{{ $carnet->id }}">
