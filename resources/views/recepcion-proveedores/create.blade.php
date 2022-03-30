@@ -14,29 +14,28 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
-
-                            @if ($errors->any())
-                                <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                    <strong>¡Revise los campos! </strong>
-                                    @foreach ($errors->all() as $error)
-                                        <span class="badge badge-danger">{{ $error }}</span>
-                                    @endforeach
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
-
                             @can('crear-recepcion-proveedor')
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
+                                @if ($errors->any())
+                                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                        <strong>¡Revise los campos! </strong>
+                                        @foreach ($errors->all() as $error)
+                                            <span class="badge badge-danger">{{ $error }}</span>
+                                        @endforeach
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
                                 <form action="{{ route('recepcion-proveedores.store') }}" method="POST">
                                     @csrf
                                     <div class="row">

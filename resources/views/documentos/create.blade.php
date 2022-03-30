@@ -32,7 +32,7 @@
                                 </div>
                             @endif
 
-                            @can('crear-blog')
+                            @can('crear-documento')
                                 <form action="{{ route('documentos.store') }}" method="POST">
                                     @csrf
                                     <div class="row">

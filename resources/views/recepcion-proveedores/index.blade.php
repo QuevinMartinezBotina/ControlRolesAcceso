@@ -76,12 +76,12 @@
                                                                     @method('DELETE')
                                                                     @csrf
                                                                     {{-- Botones de editar --}}
-                                                                    @can('editar-proveedor')
+                                                                    @can('editar-recepcion-proveedor')
                                                                         <a class="btn btn-primary"
                                                                             href="{{ route('recepcion-proveedores.edit', $proveedor->id) }}">Editar
                                                                         </a>
                                                                     @endcan
-                                                                    @can('borrar-proveedor')
+                                                                    @can('borrar-recepcion-proveedor')
                                                                         {{-- Boton eliminar --}}
                                                                         <button class="btn btn-danger" type="submit">Borrar</button>
                                                                     @endcan

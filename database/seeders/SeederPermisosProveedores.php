@@ -17,11 +17,11 @@ class SeederPermisosProveedores extends Seeder
     {
         $permisos = [
             //Tabla cargos
-            'ver-proveedor',
-            'crear-proveedor',
-            'editar-proveedor',
+            'ver-recepcion-proveedor',
+            'crear-recepcion-proveedor',
+            'editar-recepcion-proveedor',
             'editar-salida',
-            'borrar-proveedor',
+            'borrar-recepcion-proveedor',
 
         ];
         foreach ($permisos as $permiso) {

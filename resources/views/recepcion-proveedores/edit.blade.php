@@ -26,7 +26,7 @@
                                 </div>
                             @endif
 
-                            @can('crear-estado')
+                            @can('editar-recepcion-proveedor')
                                 <form action="{{ route('recepcion-proveedores.update', $recepcionProveedore->id) }}"
                                     method="POST">
                                     @csrf
