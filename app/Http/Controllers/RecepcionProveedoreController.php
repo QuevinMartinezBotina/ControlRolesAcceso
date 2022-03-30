@@ -30,7 +30,7 @@ class RecepcionProveedoreController extends Controller
     {
         $proveedores = RecepcionProveedore::all();
 
-        return view('recepcion-recepcion-proveedores.index', compact('proveedores'));
+        return view('recepcion-proveedores.index', compact('proveedores'));
     }
 
     /**
@@ -43,7 +43,7 @@ class RecepcionProveedoreController extends Controller
         $estados = Estado::all();
         $documentos = Documento::all();
 
-        return view('recepcion-recepcion-proveedores.create', compact('estados', 'documentos'));
+        return view('recepcion-proveedores.create', compact('estados', 'documentos'));
     }
 
     /**
@@ -66,7 +66,7 @@ class RecepcionProveedoreController extends Controller
             $request->nombre == null &&
             $request->observaciones == null
         ) {
-            return redirect()->route('recepcion-recepcion-proveedores.create')->with('success', 'Los campos estan vacios');
+            return redirect()->route('recepcion-proveedores.create')->with('success', 'Los campos estan vacios');
         } else {
 
             $this->validate($request, [
@@ -122,7 +122,7 @@ class RecepcionProveedoreController extends Controller
 
             $recepcionProveedor->save();
 
-            return redirect()->route('recepcion-recepcion-proveedores.create')->with('success', 'Creado con exito');
+            return redirect()->route('recepcion-proveedores.create')->with('success', 'Creado con exito');
         }
     }
 
@@ -149,7 +149,7 @@ class RecepcionProveedoreController extends Controller
         $estados = Estado::all();
         $documentos = Documento::all();
 
-        return view('recepcion-recepcion-proveedores.edit', compact('estados', 'documentos', 'recepcionProveedore'));
+        return view('recepcion-proveedores.edit', compact('estados', 'documentos', 'recepcionProveedore'));
     }
 
     /**
@@ -161,15 +161,10 @@ class RecepcionProveedoreController extends Controller
      */
     public function update(Request $request, RecepcionProveedore $recepcionProveedore)
     {
-        request()->validate([
-            'numero' => 'required',
-            'id_estado' => 'required',
-        ]);
 
         $recepcionProveedore->update($request->all());
 
-
-        return redirect()->route('carnets.index')->with('success', 'Actualizado con exito!');
+        return redirect()->route('recepcion-proveedores.index')->with('success', 'Actualizado con exito!');
     }
 
     /**
@@ -184,7 +179,7 @@ class RecepcionProveedoreController extends Controller
         exit; */
 
         RecepcionProveedore::find($recepcionProveedore)->delete();
-        return redirect()->route('recepcion-recepcion-proveedores.index')->with('success', 'Eliminado con exito!');
+        return redirect()->route('recepcion-proveedores.index')->with('success', 'Eliminado con exito!');
     }
 
     public function salidaProveedor(Request $request,  $recepcionProveedore)
@@ -220,6 +215,6 @@ class RecepcionProveedoreController extends Controller
         $proveedor->fecha_salida = $fecha_sistema;
         $proveedor->save();
 
-        return redirect()->route('recepcion-recepcion-proveedores.index')->with('success', 'Salida registrada con exito!');
+        return redirect()->route('recepcion-proveedores.index')->with('success', 'Salida registrada con exito!');
     }
 }

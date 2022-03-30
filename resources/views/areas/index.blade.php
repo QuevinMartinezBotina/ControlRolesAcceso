@@ -56,13 +56,12 @@
                                                                 @method('DELETE')
                                                                 @csrf
                                                                 {{-- Botones de editar --}}
-                                                                @can('editar-sede')
+                                                                @can('editar-area')
                                                                     <a class="btn btn-primary"
                                                                         href="{{ route('areas.edit', $area->id) }}">Editar
                                                                     </a>
                                                                 @endcan
-                                                                @can('borrar-sede')
-
+                                                                @can('borrar-area')
                                                                     {{-- Boton eliminar --}}
                                                                     <button class="btn btn-danger" type="submit">Borrar</button>
                                                                 @endcan
