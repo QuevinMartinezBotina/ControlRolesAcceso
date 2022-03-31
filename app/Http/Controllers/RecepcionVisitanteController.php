@@ -77,6 +77,29 @@ class RecepcionVisitanteController extends Controller
 
         ]);
 
+        /*
+            * Funcion para hacer que se cambie el estado de los carnet
+        */
+        //?Encontrar estado de ocupado para el carnet
+        $estados = Estado::all('id', 'nom_estado');
+
+        foreach ($estados as $estado) {
+            if ($estado->nom_estado == 'Carnet Ocupado') {
+                $id_Estado_Carnet = $estado->id;
+            }
+        }
+
+        $carnet = Carnet::find($request->id_carnet); //?Sacamos el id del carnet
+
+
+        $carnet->id_estado = $id_Estado_Carnet;
+        $carnet->update();
+
+
+        /*
+            ! Esta seccion es de guardar los datos de la visita
+        */
+
         //*Fecha
         $Object = new DateTime();
         $Object->setTimezone(new DateTimeZone('America/Bogota'));
@@ -106,7 +129,7 @@ class RecepcionVisitanteController extends Controller
 
         $recepcionVisita->save();
 
-        return redirect()->route('recepcion-visitas.index')->with('success', 'Datos agragados con extio');
+        return redirect()->route('recepcion-visitas.index')->with('success', 'Datos agregados con extio');
     }
 
     /**
@@ -181,9 +204,6 @@ class RecepcionVisitanteController extends Controller
 
     public function salidaVisitante(Request $request,  $recepcionVisitante)
     {
-        /* echo 'Hello world';
-        dd($recepcionVisitante);
-        exit; */
 
         /*
             * Operaciones para encontrar estado y asignar horas y fechas
@@ -203,11 +223,31 @@ class RecepcionVisitanteController extends Controller
             }
         }
 
-        $proveedor = RecepcionVisitante::find($recepcionVisitante);
+        $visitante = RecepcionVisitante::find($recepcionVisitante);
 
-        $proveedor->id_estado = $id_Estado;
-        $proveedor->fecha_salida = $fecha_sistema;
-        $proveedor->save();
+        /* dd($visitante);
+        exit; */
+
+        $visitante->id_estado = $id_Estado;
+        $visitante->fecha_salida = $fecha_sistema;
+        $visitante->save();
+
+        /*
+            * Funcion para hacer que se cambie el estado de los carnet
+        */
+        //?Encontrar estado de disponible para el carnet
+        $estados = Estado::all('id', 'nom_estado');
+
+        foreach ($estados as $estado) {
+            if ($estado->nom_estado == 'Carnet Disponible') {
+                $id_Estado_Carnet = $estado->id;
+            }
+        }
+
+        $carnet = Carnet::find($visitante->id_carnet); //?Sacamos el id del carnet
+
+        $carnet->id_estado = $id_Estado_Carnet;
+        $carnet->update();
 
         return redirect()->route('recepcion-visitas.index')->with('SuccessSalidaVisita', 'Salida registrada con exito!');
     }
